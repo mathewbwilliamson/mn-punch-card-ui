@@ -1,12 +1,17 @@
 import React from 'react';
-import { Popup } from './Popup';
+import { Modal } from './Modal';
 
 interface CreateProductItemProps {}
 
 export const CreateProductItem: React.FC<CreateProductItemProps> = () => {
   return (
     <div className=''>
-      <Popup />
+      <Modal>
+        <>
+          <h1>Heading</h1>
+          <p>Lorem ipsum </p>
+        </>
+      </Modal>
     </div>
   );
 };
