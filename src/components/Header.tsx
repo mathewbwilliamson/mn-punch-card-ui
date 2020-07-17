@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreateProductButton } from './CreateProductButton';
+import { CreateProductButton } from './CreateProduct/CreateProductButton';
 
 interface HeaderProps {
   isAdmin?: boolean;
