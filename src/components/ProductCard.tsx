@@ -1,9 +1,9 @@
 import React from 'react';
-import { Product } from '../../types/productTypes';
-import './ProductCard.css';
+import { Product } from '../types/productTypes';
 
 interface ProductCardProps {
-  productData: Product; // [matt] TODO Fix this any
+  productData: Product;
+  isAdmin?: boolean; // [matt] Used for adding a delete button
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
