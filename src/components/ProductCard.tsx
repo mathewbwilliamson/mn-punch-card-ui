@@ -5,5 +5,5 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = () => {
-  return <div>Product Card</div>;
+  return <div className='product-card__container'>Product Card</div>;
 };
