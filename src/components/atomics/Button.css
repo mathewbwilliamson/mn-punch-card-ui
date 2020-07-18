@@ -17,6 +17,7 @@
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+  border-radius: 2px;
 }
 
 .btn:after {
@@ -41,16 +42,16 @@
 
 /* Button 3 */
 .btn-3 {
-  background: #fcad26;
+  background: #49b6ea;
   color: #fff;
 }
 
 .btn-3:hover {
-  background: #f29e0d;
+  background: #2fa6df;
 }
 
 .btn-3:active {
-  background: #f58500;
+  background: #2fa6df;
   top: 2px;
 }
 
