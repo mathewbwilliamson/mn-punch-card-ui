@@ -20,6 +20,7 @@ export const Input: React.FC<InputProps> = ({
       <label>
         ASIN:
         <input
+          className='w-32 border-solid border rounded-sm border-gray-300 pl-1 ml-2'
           type='text'
           name={name}
           id={name}
@@ -28,7 +29,7 @@ export const Input: React.FC<InputProps> = ({
           onChange={onChange}
         />
       </label>
-      <span>{errorMessage}</span>
+      <div className='text-red-700 text-sm'>{errorMessage}</div>
     </div>
   );
 };
