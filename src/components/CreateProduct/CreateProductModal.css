@@ -1,0 +1,14 @@
+.popup-content {
+  width: 500px !important;
+  height: 630px;
+  overflow-y: auto;
+}
+
+.create-product-modal__container {
+  width: 455px;
+  height: 100%;
+}
+
+.popup-content .product-card__container {
+  height: 80%;
+}

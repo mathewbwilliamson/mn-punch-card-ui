@@ -3,40 +3,45 @@ import { FindAmazonProductInput } from './FindAmazonProductInput';
 import { Product } from '../../types/productTypes';
 import { ProductCard } from '../ProductCard';
 import { verifyAsin } from '../../utils/verifyAsin';
+import axios from 'axios';
+import './CreateProductModal.css';
+import { AddNewProductToDB } from './AddNewProductToDB';
 
 interface CreateProductModalProps {}
 
 export const CreateProductModal: React.FC<CreateProductModalProps> = () => {
   const [currentProduct, setCurrentProduct] = React.useState<Product>();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
 
   const handleFindProductClick = async (asin: string) => {
     const isAsinVerified = verifyAsin(asin);
-    console.log(
-      '\x1b[41m%s \x1b[0m',
-      '[matt] CLICK asin',
-      asin,
-      isAsinVerified,
-      setCurrentProduct
-    );
+
     if (!isAsinVerified) {
       setError('This ASIN is invalid');
+
       return;
     } else {
+      setIsLoading(true);
       setError('');
 
-      // const product = axios();
-      // setCurrentProduct()
+      axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`).then(
+        (response) => {
+          setCurrentProduct(response.data);
+          setIsLoading(false);
+        }
+      );
     }
   };
-
+  // [matt] TODO: Add a close button in the top right corner
   return (
-    <div className='w-3/5 h-64 bg-white'>
+    <div className='create-product-modal__container bg-white'>
       <FindAmazonProductInput
         handleClick={handleFindProductClick}
         error={error}
       />
-      {currentProduct && <ProductCard productData={currentProduct} />}
+      <ProductCard productData={currentProduct} isLoading={isLoading} />
+      <AddNewProductToDB />
     </div>
   );
 };

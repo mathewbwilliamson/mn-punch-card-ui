@@ -18,7 +18,7 @@ export const ProductList: React.FC<ProductListProps> = ({
   }, []);
 
   return (
-    <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2'>
+    <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-8'>
       {productData.map((product) => (
         <ProductCard
           key={product.asin}
