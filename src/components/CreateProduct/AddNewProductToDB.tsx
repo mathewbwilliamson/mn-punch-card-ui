@@ -9,9 +9,9 @@ interface AddNewProductToDBProps {
 export const AddNewProductToDB: React.FC<AddNewProductToDBProps> = () => {
   return (
     <Button
-      text='Add New Product'
+      text='Add Product'
       onClick={() => {}}
-      containerClassNames={'w-full flex justify-end'}
+      containerClassNames={'absolute right-0 bottom-0 mr-6 mb-4'}
     />
   );
 };

@@ -7,8 +7,8 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ isAdmin = false }) => {
   return (
-    <div>
-      This is the header
+    <div className='flex'>
+      <div>This is the header</div>
       {isAdmin && <CreateProductButton />}
     </div>
   );

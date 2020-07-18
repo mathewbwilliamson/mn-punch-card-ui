@@ -12,7 +12,7 @@ export const CreateProductButton: React.FC<CreateProductButtonProps> = () => {
         trigger={
           <Button
             text='Add New Product'
-            containerClassNames={'w-full flex justify-end'}
+            containerClassNames={'w-full flex justify-end -mr-4'}
           />
         }
         modal={true}

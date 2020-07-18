@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from '../atomics/Button';
+import { Input } from '../atomics/Input';
 
 interface FindAmazonProductInputProps {
   handleClick: (asin: string) => void;
@@ -10,25 +12,20 @@ export const FindAmazonProductInput: React.FC<FindAmazonProductInputProps> = ({
   error,
 }) => {
   const [asin, setAsin] = React.useState<string>('');
-  // [matt] create a util to check if something is a valid ASIN. Starts with B, 10 letters or digits, no special chars
 
   return (
-    <div className=''>
-      <div>
-        <label>
-          ASIN:
-          <input
-            type='text'
-            name='asin'
-            id='asin'
-            placeholder='B000000'
-            value={asin}
-            onChange={(e) => setAsin(e.target.value)}
-          />
-        </label>
-        <span>{error}</span>
-      </div>
-      <button onClick={() => handleClick(asin)}>Find Amazon Product</button>
+    <div className='flex justify-between pt-4 pl-4 items-center'>
+      <Input
+        value={asin}
+        onChange={(e) => setAsin(e.target.value)}
+        errorMessage={error}
+        placeholderText='B0012345678'
+      />
+      <Button
+        containerClassNames='-mr-4'
+        onClick={() => handleClick(asin)}
+        text='Find Product'
+      />
     </div>
   );
 };
