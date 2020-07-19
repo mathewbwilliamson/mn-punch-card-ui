@@ -1,11 +1,11 @@
 import React from 'react';
 import { FindAmazonProductInput } from './FindAmazonProductInput';
 import { Product } from '../../types/productTypes';
-import { ProductCard } from '../ProductCard';
 import { verifyAsin } from '../../utils/verifyAsin';
 import axios from 'axios';
 import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
+import { ProductCardContainer } from '../ProductCardContainer';
 
 interface CreateProductModalProps {}
 
@@ -40,7 +40,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = () => {
         handleClick={handleFindProductClick}
         error={error}
       />
-      <ProductCard
+      <ProductCardContainer
         productData={currentProduct}
         isLoading={isLoading}
         isEditing={true}
