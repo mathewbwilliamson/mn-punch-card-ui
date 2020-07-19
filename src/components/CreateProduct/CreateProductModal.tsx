@@ -6,6 +6,7 @@ import axios from 'axios';
 import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
 import { ProductCardContainer } from '../ProductCardContainer';
+import { MdClose } from 'react-icons/md';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -56,7 +57,12 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   // [matt] TODO: Add a close button in the top right corner
   return (
     <div className='create-product-modal__container bg-white'>
-      <button onClick={handleClose}>CLOSE</button>
+      <button
+        className='absolute top-0 right-0 mr-4 mt-3'
+        onClick={handleClose}
+      >
+        <MdClose />
+      </button>
       <FindAmazonProductInput
         handleClick={handleFindProductClick}
         error={error}
