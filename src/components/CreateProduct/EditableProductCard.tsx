@@ -4,14 +4,24 @@ import { Input } from '../atomics/Input';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 
 interface EditableProductCardProps {
+  titleReactState?: [string, React.Dispatch<React.SetStateAction<string>>];
   productData?: Product;
 }
 
 export const EditableProductCard: React.FC<EditableProductCardProps> = ({
   productData,
+  titleReactState,
 }) => {
   if (!productData) {
     return null;
+  }
+
+  let title: string = productData.title;
+  let setTitle: React.Dispatch<React.SetStateAction<string>>;
+
+  if (!!titleReactState) {
+    [title, setTitle] = titleReactState;
+    title = !title ? productData.title : title;
   }
 
   return (
@@ -19,8 +29,9 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
       <Input
         name='title'
         label='Title'
-        value={productData.title}
+        value={title}
         inputClassNames='w-full'
+        onChange={(e) => setTitle(e.target.value)}
       />
       <div className='pt-2 pb-2'>
         <span>Price: ${productData.price}</span>

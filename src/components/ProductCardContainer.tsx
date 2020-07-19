@@ -1,6 +1,5 @@
 import React from 'react';
 import { Product } from '../types/productTypes';
-import { Input } from './atomics/Input';
 import { LoadingState } from './atomics/LoadingState';
 import { ProductCard } from './ProductCard';
 import { EditableProductCard } from './CreateProduct/EditableProductCard';
@@ -10,12 +9,14 @@ interface ProductCardContainerProps {
   isAdmin?: boolean; // [matt] Used for adding a delete button
   isLoading?: boolean;
   isEditing?: boolean;
+  titleReactState?: [string, React.Dispatch<React.SetStateAction<string>>];
 }
 
 export const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
   productData,
   isLoading = false,
   isEditing = false,
+  titleReactState,
 }) => {
   return (
     <div className='product-card__container text-gray-900 m-4 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
@@ -24,7 +25,10 @@ export const ProductCardContainer: React.FC<ProductCardContainerProps> = ({
         <ProductCard productData={productData} />
       )}
       {!isLoading && !!productData && isEditing && (
-        <EditableProductCard productData={productData} />
+        <EditableProductCard
+          productData={productData}
+          titleReactState={titleReactState}
+        />
       )}
     </div>
   );

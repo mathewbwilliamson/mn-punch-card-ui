@@ -1,16 +1,17 @@
 import React from 'react';
 import { Button } from '../atomics/Button';
-import { Product } from '../../types/productTypes';
 
 interface AddNewProductToDBProps {
-  newProduct?: Product;
+  handleClick?: () => void;
 }
 
-export const AddNewProductToDB: React.FC<AddNewProductToDBProps> = () => {
+export const AddNewProductToDB: React.FC<AddNewProductToDBProps> = ({
+  handleClick,
+}) => {
   return (
     <Button
       text='Add Product'
-      onClick={() => {}}
+      onClick={handleClick}
       containerClassNames={'absolute right-0 bottom-0 mr-6 mb-4'}
     />
   );
