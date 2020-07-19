@@ -14,9 +14,14 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
   }
 
   return (
-    <div>
-      <Input name='title' value={productData.title} />
-      <div>Price: {productData.price}</div>
+    <div className='w-full'>
+      <Input
+        name='title'
+        label='Title'
+        value={productData.title}
+        inputClassNames='w-full'
+      />
+      <div className='pt-2 pb-2'>Price: {productData.price}</div>
       <img src={productData.imageUrl} alt={`${productData.title}`} />
     </div>
   );

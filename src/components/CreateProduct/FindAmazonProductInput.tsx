@@ -17,6 +17,7 @@ export const FindAmazonProductInput: React.FC<FindAmazonProductInputProps> = ({
     <div className='flex justify-between pt-4 pl-4 items-center'>
       <Input
         name='asin'
+        label='ASIN'
         value={asin}
         onChange={(e) => setAsin(e.target.value)}
         errorMessage={error}
