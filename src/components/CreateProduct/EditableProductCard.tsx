@@ -22,7 +22,11 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
         inputClassNames='w-full'
       />
       <div className='pt-2 pb-2'>Price: {productData.price}</div>
-      <img src={productData.imageUrl} alt={`${productData.title}`} />
+      <img
+        className='mx-auto'
+        src={productData.imageUrl}
+        alt={`${productData.title}`}
+      />
     </div>
   );
 };

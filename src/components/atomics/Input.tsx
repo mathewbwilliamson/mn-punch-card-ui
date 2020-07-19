@@ -20,11 +20,11 @@ export const Input: React.FC<InputProps> = ({
   inputClassNames,
 }) => {
   return (
-    <div className=''>
+    <div>
       <label className='w-full'>
         {label}:
         <input
-          className={`w-32 border-solid border rounded-sm border-gray-300 pl-1 ml-2 ${inputClassNames}`}
+          className={`w-32 border-solid border rounded-sm border-gray-300 pl-1 pr-1 ml-2 ${inputClassNames}`}
           type='text'
           name={name}
           id={name}
