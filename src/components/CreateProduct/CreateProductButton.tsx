@@ -18,7 +18,7 @@ export const CreateProductButton: React.FC<CreateProductButtonProps> = () => {
         modal={true}
         closeOnDocumentClick={true}
       >
-        <CreateProductModal />
+        {(handleClose) => <CreateProductModal handleClose={handleClose} />}
       </Popup>
     </div>
   );

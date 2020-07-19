@@ -7,9 +7,13 @@ import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
 import { ProductCardContainer } from '../ProductCardContainer';
 
-interface CreateProductModalProps {}
+interface CreateProductModalProps {
+  handleClose: () => void;
+}
 
-export const CreateProductModal: React.FC<CreateProductModalProps> = () => {
+export const CreateProductModal: React.FC<CreateProductModalProps> = ({
+  handleClose,
+}) => {
   const [currentProduct, setCurrentProduct] = React.useState<Product>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
@@ -37,12 +41,22 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = () => {
 
   const handleAddNewProductClick = async () => {
     const newProduct = { ...currentProduct, title: titleReactState[0] };
-    console.log('\x1b[41m%s \x1b[0m', '[matt] newProduct', newProduct);
+
+    axios
+      .post(`${process.env.REACT_APP_API_ENDPOINT}/amazon`, newProduct)
+      .then((response) => {
+        if (response.status !== 200) {
+          setError('There was a problem with adding the product!');
+          throw new Error('There was a problem!');
+        }
+        handleClose();
+      });
   };
 
   // [matt] TODO: Add a close button in the top right corner
   return (
     <div className='create-product-modal__container bg-white'>
+      <button onClick={handleClose}>CLOSE</button>
       <FindAmazonProductInput
         handleClick={handleFindProductClick}
         error={error}
