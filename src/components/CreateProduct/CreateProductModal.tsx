@@ -40,7 +40,11 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = () => {
         handleClick={handleFindProductClick}
         error={error}
       />
-      <ProductCard productData={currentProduct} isLoading={isLoading} />
+      <ProductCard
+        productData={currentProduct}
+        isLoading={isLoading}
+        isEditing={true}
+      />
       <AddNewProductToDB />
     </div>
   );
