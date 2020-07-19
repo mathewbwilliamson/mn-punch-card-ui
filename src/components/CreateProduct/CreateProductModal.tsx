@@ -54,7 +54,6 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
       });
   };
 
-  // [matt] TODO: Add a close button in the top right corner
   return (
     <div className='create-product-modal__container bg-white'>
       <button
