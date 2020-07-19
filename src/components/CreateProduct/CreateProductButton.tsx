@@ -7,7 +7,7 @@ interface CreateProductButtonProps {}
 
 export const CreateProductButton: React.FC<CreateProductButtonProps> = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full mr-12'>
       <Popup
         trigger={
           <Button
