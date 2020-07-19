@@ -1,11 +1,17 @@
-.main-container {
-  /* margin: 5vh 5vw; */
-}
-
 .product-card__container img {
   max-height: 250px;
 }
 
 html {
   background-color: #edf2f7;
+}
+
+.footer-1 {
+  background-color: #202020;
+}
+.footer-2 {
+  background-color: #ebe714;
+}
+.footer-3 {
+  background-color: #ee3b34;
 }
