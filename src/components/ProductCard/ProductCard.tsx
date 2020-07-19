@@ -1,6 +1,6 @@
 import React from 'react';
-import { Product } from '../types/productTypes';
-import { calculateRewardCardPrice } from '../utils/calculateRewardCardPrice';
+import { Product } from '../../types/productTypes';
+import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 
 interface ProductCardProps {
   productData?: Product;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductCard } from '../components/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 import axios from 'axios';
-import { Product } from '../types/productTypes';
+import { Product } from '../../types/productTypes';
 
 interface ProductListProps {
   isAdmin?: boolean;

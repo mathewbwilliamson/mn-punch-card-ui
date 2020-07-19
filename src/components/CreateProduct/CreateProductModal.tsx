@@ -5,8 +5,8 @@ import { verifyAsin } from '../../utils/verifyAsin';
 import axios from 'axios';
 import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
-import { ProductCardContainer } from '../ProductCardContainer';
 import { MdClose } from 'react-icons/md';
+import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
 
 interface CreateProductModalProps {
   handleClose: () => void;
