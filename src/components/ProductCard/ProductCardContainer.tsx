@@ -1,8 +1,8 @@
 import React from 'react';
-import { Product } from '../types/productTypes';
-import { LoadingState } from './atomics/LoadingState';
 import { ProductCard } from './ProductCard';
-import { EditableProductCard } from './CreateProduct/EditableProductCard';
+import { Product } from '../../types/productTypes';
+import { LoadingState } from '../atomics/LoadingState';
+import { EditableProductCard } from '../CreateProduct/EditableProductCard';
 
 interface ProductCardContainerProps {
   productData?: Product;

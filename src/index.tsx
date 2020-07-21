@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './assets/main.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'overmind-react';
+import { oStore } from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider value={oStore}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
