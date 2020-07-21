@@ -69,6 +69,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         handleClose();
       });
   };
+  console.log('\x1b[42m%s \x1b[0m', '[matt] productData', currentProduct);
 
   return (
     <div className='create-product-modal__container bg-white'>
@@ -88,7 +89,10 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         isEditing={true}
         titleReactState={titleReactState}
       />
-      <AddNewProductToDB handleClick={handleAddNewProductClick} />
+      <AddNewProductToDB
+        handleClick={handleAddNewProductClick}
+        isDisabled={!!currentProduct?.price && currentProduct?.price <= 0}
+      />
     </div>
   );
 };
