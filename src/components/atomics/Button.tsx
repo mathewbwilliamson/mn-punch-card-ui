@@ -16,10 +16,12 @@ export const Button: React.FC<ButtonProps> = ({
   containerClassNames,
   isDisabled = false,
 }) => {
+  // [matt] TODO need to add disabled classes so that CSS change to a disabled button
+  const disabledClassName = isDisabled ? 'disabled' : null;
   return (
     <div className={`${containerClassNames}`}>
       <button
-        className={`btn btn-3 ${buttonClassNames}`}
+        className={`btn btn-3 ${buttonClassNames} ${disabledClassName}`}
         onClick={!isDisabled ? onClick : undefined}
         disabled={isDisabled}
       >
