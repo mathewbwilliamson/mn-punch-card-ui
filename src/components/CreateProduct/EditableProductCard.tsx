@@ -2,6 +2,7 @@ import React from 'react';
 import { Product } from '../../types/productTypes';
 import { Input } from '../atomics/Input';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
+import { MdArrowForward } from 'react-icons/md';
 
 interface EditableProductCardProps {
   titleReactState?: [string, React.Dispatch<React.SetStateAction<string>>];
@@ -35,8 +36,10 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
       />
       <div className='pt-2 pb-2'>
         <span>Price: ${productData.price}</span>
-        <span>ARROW</span>
-        <span>{calculateRewardCardPrice(productData.price)}</span>
+        <span className='mx-4'>
+          <MdArrowForward className='inline-block' />
+        </span>
+        <span>{calculateRewardCardPrice(productData.price)} Cards</span>
       </div>
       <img
         className='mx-auto'

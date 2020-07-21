@@ -7,6 +7,7 @@ import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
 import { MdClose } from 'react-icons/md';
 import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
+import { useOvermind } from '../../store';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -15,6 +16,8 @@ interface CreateProductModalProps {
 export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   handleClose,
 }) => {
+  const { actions } = useOvermind();
+
   const [currentProduct, setCurrentProduct] = React.useState<Product>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
@@ -31,6 +34,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
       setIsLoading(true);
       setError('');
 
+      // [matt] TODO MAke into an action
       axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`).then(
         (response) => {
           setCurrentProduct(response.data);
@@ -43,13 +47,15 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   const handleAddNewProductClick = async () => {
     const newProduct = { ...currentProduct, title: titleReactState[0] };
 
+    // [matt] TODO MAke into an action
     axios
       .post(`${process.env.REACT_APP_API_ENDPOINT}/amazon`, newProduct)
-      .then((response) => {
+      .then(async (response) => {
         if (response.status !== 200) {
           setError('There was a problem with adding the product!');
           throw new Error('There was a problem!');
         }
+        await actions.ProductListStore.getProductListFromApi();
         handleClose();
       });
   };
