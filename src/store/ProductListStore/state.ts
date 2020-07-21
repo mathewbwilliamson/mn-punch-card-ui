@@ -1,7 +1,9 @@
-interface StateStore {
-  test: string;
+import { Product } from '../../types/productTypes';
+
+interface ProductListStoreState {
+  productList: Product[];
 }
 
-export const state: StateStore = {
-  test: 'Hiya',
+export const state: ProductListStoreState = {
+  productList: [],
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import axios from 'axios';
-import { Product } from '../../types/productTypes';
+import { useOvermind } from '../../store';
 
 interface ProductListProps {
   isAdmin?: boolean;
@@ -9,17 +8,16 @@ interface ProductListProps {
 export const ProductList: React.FC<ProductListProps> = ({
   isAdmin = false,
 }) => {
-  const [productData, setProductData] = React.useState<Product[]>([]);
+  const { state, actions } = useOvermind();
 
   React.useEffect(() => {
-    axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon`).then((response) =>
-      setProductData(response.data)
-    );
+    actions.ProductListStore.getProductListFromApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mx-12 gap-8'>
-      {productData.map((product) => (
+      {state.ProductListStore.productList.map((product) => (
         <ProductCard
           key={product.asin}
           productData={product}
