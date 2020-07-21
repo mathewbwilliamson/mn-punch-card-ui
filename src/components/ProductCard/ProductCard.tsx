@@ -12,10 +12,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
     return null;
   }
   return (
-    <div className='product-card__container text-gray-900 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden bg-white'>
-      <div>Name: {productData.title}</div>
-      <div>Cards: {calculateRewardCardPrice(productData.price)}</div>
+    <div className='product-card__container relative text-gray-900 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden bg-white'>
+      <div className='absolute top-0 right-0 bg-blue-400 text-white py-2 px-3 '>
+        {calculateRewardCardPrice(productData.price)} cards
+      </div>
       <img src={productData.imageUrl} alt={`${productData.title}`} />
+      <div className='text-gray-600 text-lg'>{productData.title}</div>
     </div>
   );
 };
