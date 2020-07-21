@@ -4,7 +4,7 @@ import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 
 interface ProductCardProps {
   productData?: Product;
-  isAdmin?: boolean; // [matt] Used for adding a delete button
+  isAdmin?: boolean; // [matt] TODO Used for adding a delete button
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
