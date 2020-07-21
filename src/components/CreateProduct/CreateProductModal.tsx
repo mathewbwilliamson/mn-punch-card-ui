@@ -1,6 +1,6 @@
 import React from 'react';
 import { FindAmazonProductInput } from './FindAmazonProductInput';
-import { Product } from '../../types/productTypes';
+import { Product, NewProduct } from '../../types/productTypes';
 import { verifyAsin } from '../../utils/verifyAsin';
 import axios from 'axios';
 import './CreateProductModal.css';
@@ -8,6 +8,7 @@ import { AddNewProductToDB } from './AddNewProductToDB';
 import { MdClose } from 'react-icons/md';
 import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
 import { useOvermind } from '../../store';
+import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -45,7 +46,16 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   };
 
   const handleAddNewProductClick = async () => {
-    const newProduct = { ...currentProduct, title: titleReactState[0] };
+    if (!currentProduct) {
+      return;
+    }
+
+    const rewardCardPrice = calculateRewardCardPrice(currentProduct.price || 0);
+    const newProduct: NewProduct = {
+      ...currentProduct,
+      title: titleReactState[0],
+      rewardCardPrice,
+    };
 
     // [matt] TODO MAke into an action
     axios
