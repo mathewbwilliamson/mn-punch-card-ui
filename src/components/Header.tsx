@@ -8,8 +8,10 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ isAdmin = false }) => {
   return (
     <div className='header flex w-full flex flex-col items-center mb-8 bg-white'>
-      <div className='flex w-full flex flex-row items-center p-10 mn-bg-black text-white'>
-        <div className='ml-12 w-full'>This is the header</div>
+      <div className='flex w-full flex flex-row items-center py-10 pl-12 mn-bg-black text-white'>
+        <h2 className='text-3xl w-full'>
+          Mathnasium of New Tampa Reward Cabinet
+        </h2>
         {isAdmin && <CreateProductButton />}
       </div>
     </div>
