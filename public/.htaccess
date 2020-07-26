@@ -7,5 +7,9 @@
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
+  
+  # Redirect HTTPS to HTTP
+  RewriteCond %{HTTP:X-Forwarded-Proto} =https
+  RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 </IfModule>
