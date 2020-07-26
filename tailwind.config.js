@@ -1,7 +1,13 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   important: true,
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        serif: ['Merriweather', ...defaultTheme.fontFamily.serif],
+      },
       colors: {
         yellow: '#ebe714',
         lightRed: '#ee3b34',
@@ -19,6 +25,7 @@ module.exports = {
   variants: {
     opacity: ['responsive', 'hover'],
   },
+  plugins: [],
 };
 
 /* #ebe714 YELLOW */
