@@ -77,7 +77,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         className='absolute top-0 right-0 mr-4 mt-3'
         onClick={handleClose}
       >
-        <MdClose />
+        <MdClose className='fill-current text-gray-600' />
       </button>
       <FindAmazonProductInput
         handleClick={handleFindProductClick}
