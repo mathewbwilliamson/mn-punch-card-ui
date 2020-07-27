@@ -16,7 +16,6 @@ export const Button: React.FC<ButtonProps> = ({
   containerClassNames,
   isDisabled = false,
 }) => {
-  // [matt] TODO need to add disabled classes so that CSS change to a disabled button
   const disabledClassName = isDisabled ? 'disabled' : null;
   return (
     <div className={`${containerClassNames}`}>

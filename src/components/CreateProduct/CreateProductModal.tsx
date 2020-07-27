@@ -69,7 +69,6 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         handleClose();
       });
   };
-  console.log('\x1b[42m%s \x1b[0m', '[matt] productData', currentProduct);
 
   return (
     <div className='create-product-modal__container bg-white'>
