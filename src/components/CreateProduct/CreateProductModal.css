@@ -12,3 +12,7 @@
 .popup-content .product-card__container {
   height: 69%;
 }
+
+.product-card__container {
+  min-height: 385px;
+}
