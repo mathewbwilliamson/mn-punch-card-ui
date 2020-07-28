@@ -1,6 +1,11 @@
 import { AsyncAction } from 'overmind';
 
-export const deleteProductFromApi: AsyncAction = async ({ state, effects }) => {
-  const productListData = await effects.ProductListStore.ProductListEffect.getProductListFromApi();
-  state.ProductListStore.productList = productListData;
+export const deleteProductFromApi: AsyncAction<number, void> = async (
+  { state, effects },
+  id: number
+) => {
+  await effects.ProductDetailStore.ProductDetailEffect.deleteProductFromApi(id);
+  state.ProductListStore.productList = state.ProductListStore.productList.filter(
+    (item) => item.id !== id
+  );
 };

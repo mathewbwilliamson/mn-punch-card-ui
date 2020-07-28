@@ -2,6 +2,7 @@ import React from 'react';
 import { Product } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import { Button } from '../atomics/Button';
+import { useOvermind } from '../../store';
 
 interface ProductCardProps {
   productData?: Product;
@@ -9,9 +10,12 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
+  const { actions } = useOvermind();
+
   if (!productData) {
     return null;
   }
+
   return (
     <div className='product-card__container relative text-gray-900 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden bg-white'>
       <div className='absolute top-0 right-0 bg-blue-400 text-white py-2 px-3 rounded-bl-lg'>
@@ -22,7 +26,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
       <img src={productData.imageUrl} alt={`${productData.title}`} />
       <div className='text-gray-600 text-lg'>{productData.title}</div>
       <div className='flex flex-row justify-end w-full absolute bottom-0 right-0 my-4 mt-6'>
-        <Button buttonClassNames='mr-4 px-4 py-1' text='Delete' />
+        <Button
+          buttonClassNames='mr-4 px-4 py-1'
+          text='Delete'
+          onClick={() =>
+            actions.ProductDetailStore.deleteProductFromApi(productData.id)
+          }
+        />
         <Button buttonClassNames='mr-4 px-4 py-1' text='Edit' />
       </div>
     </div>
