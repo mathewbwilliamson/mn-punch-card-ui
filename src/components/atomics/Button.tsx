@@ -17,11 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   isDisabled = false,
 }) => {
   const disabledClassName = isDisabled ? 'disabled' : null;
-  console.log(
-    '\x1b[41m%s \x1b[0m',
-    '[matt] buttonClassNames',
-    buttonClassNames
-  );
+
   return (
     <div className={`${containerClassNames}`}>
       <button
