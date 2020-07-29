@@ -27,6 +27,10 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
     currentProduct?.title || currentProduct?.amazonTitle || ''
   );
 
+  React.useEffect(() => {
+    setTitle(currentProduct?.title || currentProduct?.amazonTitle || '');
+  }, [currentProduct]);
+
   const handleFindProductClick = async (asin: string) => {
     const isAsinVerified = verifyAsin(asin);
 
@@ -93,7 +97,6 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
           setTitle={setTitle}
         />
       </div>
-
       <AddNewProductToDB
         handleClick={handleAddNewProductClick}
         isDisabled={!!currentProduct?.price && currentProduct?.price <= 0}
