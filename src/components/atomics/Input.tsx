@@ -8,6 +8,7 @@ interface InputProps {
   errorMessage?: string;
   placeholderText?: string;
   inputClassNames?: string;
+  onBlur?: () => void;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -18,6 +19,7 @@ export const Input: React.FC<InputProps> = ({
   errorMessage,
   placeholderText,
   inputClassNames,
+  onBlur,
 }) => {
   return (
     <div>
@@ -31,6 +33,7 @@ export const Input: React.FC<InputProps> = ({
           placeholder={placeholderText}
           value={value}
           onChange={onChange}
+          onBlur={onBlur}
         />
       </label>
       <div className='text-red-700 text-sm'>{errorMessage}</div>

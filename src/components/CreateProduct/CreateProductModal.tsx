@@ -9,6 +9,7 @@ import { MdClose } from 'react-icons/md';
 import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
 import { useOvermind } from '../../store';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
+import { EditableProductCard } from '../EditableProductCard/EditableProductCard';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -22,7 +23,9 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   const [currentProduct, setCurrentProduct] = React.useState<Product>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
-  const titleReactState = React.useState<string>(currentProduct?.title || '');
+  const [title, setTitle] = React.useState<string>(
+    currentProduct?.title || currentProduct?.amazonTitle || ''
+  );
 
   const handleFindProductClick = async (asin: string) => {
     const isAsinVerified = verifyAsin(asin);
@@ -53,7 +56,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
     const rewardCardPrice = calculateRewardCardPrice(currentProduct.price || 0);
     const newProduct: NewProduct = {
       ...currentProduct,
-      title: titleReactState[0],
+      title: title,
       rewardCardPrice,
     };
 
@@ -82,12 +85,15 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         handleClick={handleFindProductClick}
         error={error}
       />
-      <ProductCardContainer
-        productData={currentProduct}
-        isLoading={isLoading}
-        isEditing={true}
-        titleReactState={titleReactState}
-      />
+      <div className='product-card__container text-gray-900'>
+        <EditableProductCard
+          productData={currentProduct}
+          isLoading={isLoading}
+          title={title}
+          setTitle={setTitle}
+        />
+      </div>
+
       <AddNewProductToDB
         handleClick={handleAddNewProductClick}
         isDisabled={!!currentProduct?.price && currentProduct?.price <= 0}

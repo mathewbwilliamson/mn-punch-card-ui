@@ -10,8 +10,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
-  const { actions } = useOvermind();
-
   if (!productData) {
     return null;
   }
@@ -25,16 +23,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
       </div>
       <img src={productData.imageUrl} alt={`${productData.title}`} />
       <div className='text-gray-600 text-lg'>{productData.title}</div>
-      <div className='flex flex-row justify-end w-full absolute bottom-0 right-0 my-4 mt-6'>
-        <Button
-          buttonClassNames='mr-4 px-4 py-1'
-          text='Delete'
-          onClick={() =>
-            actions.ProductDetailStore.deleteProductFromApi(productData.id)
-          }
-        />
-        <Button buttonClassNames='mr-4 px-4 py-1' text='Edit' />
-      </div>
     </div>
   );
 };
