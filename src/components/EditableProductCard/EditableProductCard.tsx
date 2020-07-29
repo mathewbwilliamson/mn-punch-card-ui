@@ -24,8 +24,6 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
     return null;
   }
 
-  console.log('\x1b[41m%s \x1b[0m', '[matt] title', title);
-
   return (
     <div className='w-full'>
       <LoadingState isLoading={isLoading} />

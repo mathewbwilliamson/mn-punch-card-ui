@@ -28,3 +28,12 @@ export const updateProduct: AsyncAction<
     }
   );
 };
+
+export const getAmazonProduct: AsyncAction<string, void> = async (
+  { state, effects },
+  asin: string
+) => {
+  state.ProductDetailStore.currentProduct = await effects.ProductDetailStore.ProductDetailEffect.findAmazonProduct(
+    asin
+  );
+};

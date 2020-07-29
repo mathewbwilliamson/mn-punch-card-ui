@@ -18,18 +18,20 @@ interface CreateProductModalProps {
 export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   handleClose,
 }) => {
-  const { actions } = useOvermind();
+  const { state, actions } = useOvermind();
 
-  const [currentProduct, setCurrentProduct] = React.useState<Product>();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
+
+  const currentProduct = state.ProductDetailStore.currentProduct;
+
   const [title, setTitle] = React.useState<string>(
     currentProduct?.title || currentProduct?.amazonTitle || ''
   );
 
   React.useEffect(() => {
     setTitle(currentProduct?.title || currentProduct?.amazonTitle || '');
-  }, [currentProduct]);
+  }, [currentProduct, state.ProductDetailStore.currentProduct, isLoading]);
 
   const handleFindProductClick = async (asin: string) => {
     const isAsinVerified = verifyAsin(asin);
@@ -42,13 +44,8 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
       setIsLoading(true);
       setError('');
 
-      // [matt] TODO MAke into an action
-      axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`).then(
-        (response) => {
-          setCurrentProduct(response.data);
-          setIsLoading(false);
-        }
-      );
+      await actions.ProductDetailStore.getAmazonProduct(asin);
+      setIsLoading(false);
     }
   };
 

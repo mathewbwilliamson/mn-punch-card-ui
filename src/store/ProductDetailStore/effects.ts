@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Product } from '../../types/productTypes';
 
 export const ProductDetailEffect = {
   deleteProductFromApi: async (id: number) => {
@@ -11,5 +12,9 @@ export const ProductDetailEffect = {
       `${process.env.REACT_APP_API_ENDPOINT}/amazon/${id}`,
       { title }
     );
+  },
+  findAmazonProduct: async (asin: string) => {
+    return (await axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`))
+      .data as Product;
   },
 };
