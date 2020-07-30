@@ -17,4 +17,12 @@ export const ProductDetailEffect = {
     return (await axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`))
       .data as Product;
   },
+  refreshProduct: async (id: number, asin: string) => {
+    return (
+      await axios.post(
+        `${process.env.REACT_APP_API_ENDPOINT}/amazon/refresh/${id}`,
+        { asin }
+      )
+    ).data as Product;
+  },
 };

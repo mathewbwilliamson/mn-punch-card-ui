@@ -3,6 +3,7 @@ import { Product } from '../../types/productTypes';
 import { EditableProductCard } from './EditableProductCard';
 import { Button } from '../atomics/Button';
 import { useOvermind } from '../../store';
+import { LoadingState } from '../atomics/LoadingState';
 
 interface EditableProductCardContainerProps {
   product?: Product;
@@ -13,6 +14,9 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
 }) => {
   const { actions } = useOvermind();
 
+  const [isRefreshLoading, setIsRefreshLoading] = React.useState<boolean>(
+    false
+  );
   const [title, setTitle] = React.useState<string>(
     !!product ? product.title : ''
   );
@@ -24,16 +28,35 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   const handleBlur = () => {
     actions.ProductDetailStore.updateProduct({ id: product.id, title });
   };
-
+  console.log(
+    '\x1b[41m%s \x1b[0m',
+    '[matt] isRefreshLoading',
+    isRefreshLoading
+  );
   return (
     <div className='product-card__container text-gray-900 bg-white m-4 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
-      <EditableProductCard
-        productData={product}
-        title={title}
-        setTitle={setTitle}
-        handleBlur={handleBlur}
-      />
+      <LoadingState isLoading={isRefreshLoading} />
+      {!isRefreshLoading && (
+        <EditableProductCard
+          productData={product}
+          title={title}
+          setTitle={setTitle}
+          handleBlur={handleBlur}
+        />
+      )}
       <div className='flex flex-row justify-end w-full mt-6'>
+        <Button
+          buttonClassNames='px-4 py-1 mr-4'
+          text='Refresh'
+          onClick={async () => {
+            setIsRefreshLoading(true);
+            await actions.ProductDetailStore.refreshProduct({
+              id: product.id,
+              asin: product.asin,
+            });
+            setIsRefreshLoading(false);
+          }}
+        />
         <Button
           buttonClassNames='px-4 py-1'
           text='Delete'

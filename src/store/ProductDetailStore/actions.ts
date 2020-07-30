@@ -37,3 +37,20 @@ export const getAmazonProduct: AsyncAction<string, void> = async (
     asin
   );
 };
+
+export const refreshProduct: AsyncAction<
+  { id: number; asin: string },
+  void
+> = async ({ state, effects }, payload: { id: number; asin: string }) => {
+  const savedItem = await effects.ProductDetailStore.ProductDetailEffect.refreshProduct(
+    payload.id,
+    payload.asin
+  );
+
+  state.ProductListStore.productList = [
+    ...state.ProductListStore.productList.filter(
+      (product) => product.id !== payload.id
+    ),
+    savedItem,
+  ];
+};
