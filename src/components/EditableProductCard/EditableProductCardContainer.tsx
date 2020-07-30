@@ -26,6 +26,7 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   }
 
   const handleBlur = () => {
+    console.log('\x1b[41m%s \x1b[0m', '[matt] product', product);
     actions.ProductDetailStore.updateProduct({ id: product.id, title });
   };
   console.log(

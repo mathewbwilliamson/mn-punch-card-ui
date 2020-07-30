@@ -51,6 +51,6 @@ export const refreshProduct: AsyncAction<
     ...state.ProductListStore.productList.filter(
       (product) => product.id !== payload.id
     ),
-    savedItem,
+    { ...savedItem, id: payload.id },
   ];
 };
