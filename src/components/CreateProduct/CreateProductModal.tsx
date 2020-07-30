@@ -10,6 +10,7 @@ import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
 import { useOvermind } from '../../store';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import { EditableProductCard } from '../EditableProductCard/EditableProductCard';
+import { LoadingState } from '../atomics/LoadingState';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -34,6 +35,8 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   }, [currentProduct, state.ProductDetailStore.currentProduct, isLoading]);
 
   const handleFindProductClick = async (asin: string) => {
+    setIsLoading(true);
+    console.log('\x1b[41m%s \x1b[0m', '[matt] isLoading', isLoading);
     const isAsinVerified = verifyAsin(asin);
 
     if (!isAsinVerified) {
@@ -41,7 +44,6 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
 
       return;
     } else {
-      setIsLoading(true);
       setError('');
 
       await actions.ProductDetailStore.getAmazonProduct(asin);
@@ -87,6 +89,8 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         error={error}
       />
       <div className='product-card__container text-gray-900'>
+        <LoadingState isLoading={isLoading} />
+
         <EditableProductCard
           productData={currentProduct}
           isLoading={isLoading}

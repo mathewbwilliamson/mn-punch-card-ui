@@ -26,8 +26,6 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
 
   return (
     <div className='w-full'>
-      <LoadingState isLoading={isLoading} />
-
       {!isLoading && (
         <>
           <Input
