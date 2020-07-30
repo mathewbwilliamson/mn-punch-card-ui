@@ -1,12 +1,11 @@
 import React from 'react';
 import { FindAmazonProductInput } from './FindAmazonProductInput';
-import { Product, NewProduct } from '../../types/productTypes';
+import { NewProduct } from '../../types/productTypes';
 import { verifyAsin } from '../../utils/verifyAsin';
 import axios from 'axios';
 import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
 import { MdClose } from 'react-icons/md';
-import { ProductCardContainer } from '../ProductCard/ProductCardContainer';
 import { useOvermind } from '../../store';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import { EditableProductCard } from '../EditableProductCard/EditableProductCard';

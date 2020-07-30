@@ -3,7 +3,6 @@ import { Product } from '../../types/productTypes';
 import { Input } from '../atomics/Input';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import { MdArrowForward } from 'react-icons/md';
-import { LoadingState } from '../atomics/LoadingState';
 
 interface EditableProductCardProps {
   title: string;
