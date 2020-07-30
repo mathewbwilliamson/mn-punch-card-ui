@@ -36,11 +36,11 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
 
   const handleFindProductClick = async (asin: string) => {
     setIsLoading(true);
-    console.log('\x1b[41m%s \x1b[0m', '[matt] isLoading', isLoading);
     const isAsinVerified = verifyAsin(asin);
 
     if (!isAsinVerified) {
       setError('This ASIN is invalid');
+      setIsLoading(false);
 
       return;
     } else {
