@@ -8,7 +8,7 @@ interface ProductCardContainerProps {
   title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
   productData?: Product;
-  isAdmin?: boolean; // [matt] Used for adding a delete button
+  isAdmin?: boolean;
   isLoading?: boolean;
   isEditing?: boolean;
 }

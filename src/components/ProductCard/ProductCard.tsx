@@ -1,12 +1,10 @@
 import React from 'react';
 import { Product } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
-import { Button } from '../atomics/Button';
-import { useOvermind } from '../../store';
 
 interface ProductCardProps {
   productData?: Product;
-  isAdmin?: boolean; // [matt] TODO Used for adding a delete button
+  isAdmin?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {

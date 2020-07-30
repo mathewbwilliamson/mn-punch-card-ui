@@ -26,14 +26,9 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   }
 
   const handleBlur = () => {
-    console.log('\x1b[41m%s \x1b[0m', '[matt] product', product);
     actions.ProductDetailStore.updateProduct({ id: product.id, title });
   };
-  console.log(
-    '\x1b[41m%s \x1b[0m',
-    '[matt] isRefreshLoading',
-    isRefreshLoading
-  );
+
   return (
     <div className='product-card__container text-gray-900 bg-white m-4 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
       <LoadingState isLoading={isRefreshLoading} />

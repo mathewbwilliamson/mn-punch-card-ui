@@ -5,7 +5,6 @@ import { ProductListPage } from './pages/ProductListPage';
 import { AdminPage } from './pages/AdminPage';
 
 // [matt] TODO need to put the routing in its own component
-// [matt] Make an exact path admin page that is /admin/somerandomtexttoavoidauthissues
 // [matt] make sure everything else goes to Product List Page
 const App: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ const App: React.FC = () => {
       <div className='main-container'>
         <Router>
           <Switch>
-            <Route exact path='/admin'>
+            <Route exact path='/admin-thisisarealpath-so-this-should-work'>
               <AdminPage />
             </Route>
             <Route path='/'>
