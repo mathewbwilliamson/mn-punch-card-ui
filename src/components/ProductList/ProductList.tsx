@@ -28,7 +28,10 @@ export const ProductList: React.FC<ProductListProps> = ({
               isAdmin={isAdmin}
             />
           ) : (
-            <EditableProductCardContainer product={product} />
+            <EditableProductCardContainer
+              key={product.asin}
+              product={product}
+            />
           )}
         </>
       ))}
