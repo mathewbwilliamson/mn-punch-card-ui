@@ -11,5 +11,5 @@ export interface NewProduct {
   createdAt: string;
   createdBy: string;
   updateSource: string;
-  rewardCardPrice?: number;
+  rewardCardPrice: number;
 }
