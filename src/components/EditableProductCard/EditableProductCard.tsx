@@ -22,6 +22,7 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
   if (!productData) {
     return null;
   }
+  console.log('\x1b[41m%s \x1b[0m', '[matt] productData', productData);
 
   return (
     <div className='w-full'>
@@ -31,12 +32,12 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
             name='title'
             label='Title'
             value={title}
-            inputClassNames='w-full'
+            inputClassNames='w-full '
             onChange={(e) => setTitle(e.target.value)}
             onBlur={handleBlur}
           />
           <div className='pt-2 pb-2'>
-            <span>Price: ${productData.price}</span>
+            <span>Price: ${Math.ceil(productData.price)}</span>
             <span className='mx-4'>
               <MdArrowForward className='inline-block' />
             </span>

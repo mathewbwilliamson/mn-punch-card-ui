@@ -60,6 +60,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
       ...currentProduct,
       title: title,
       rewardCardPrice,
+      price: Math.ceil(currentProduct.price),
     };
 
     // [matt] TODO MAke into an action
