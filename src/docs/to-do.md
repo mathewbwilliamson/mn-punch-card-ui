@@ -6,6 +6,7 @@
 - Add a Refresh All button
 - BEFORE initial release: Have a button to send Autumn and Julie an email with what the kids want. Popup a little popup that says "Tell Julie and Autumn about this product": what they want, student first/last name, parent first/last name, shipping address, Parent's email address, Parent Approval checkbox. "I understand that I spending X punch cards on this item, and there are no refunds. Are you sure you want this?" Then form emails to Julie and Autumn.
 - Remove all comments and console logs
+- Add in new logos and designs
 
 # Improvements and Tasks
 

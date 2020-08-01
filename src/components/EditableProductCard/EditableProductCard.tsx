@@ -22,7 +22,6 @@ export const EditableProductCard: React.FC<EditableProductCardProps> = ({
   if (!productData) {
     return null;
   }
-  console.log('\x1b[41m%s \x1b[0m', '[matt] productData', productData);
 
   return (
     <div className='w-full'>
