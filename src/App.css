@@ -15,3 +15,15 @@ html {
 .mn-bg-light-red {
   background-color: #ee3b34;
 }
+
+.footer .mn-bg-light-red {
+  background-image: url('./assets/images/Patterns-Numbers-Red.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer .mn-bg-yellow {
+  background-image: url('./assets/images/Patterns-Symbols-Yellow.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
