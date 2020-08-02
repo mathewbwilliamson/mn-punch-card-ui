@@ -1,12 +1,14 @@
 # BEFORE INITIAL RELEASE
 
+DONE - Sort products by price, low to high
+DONE - Add in new logos and designs
+
 - Add a link to the product! Adjust margin top to image, margin bottom away from image.
-- Sort products by price, low to high
 - Not able to include duplicates on the New Product list
 - Add a Refresh All button
 - BEFORE initial release: Have a button to send Autumn and Julie an email with what the kids want. Popup a little popup that says "Tell Julie and Autumn about this product": what they want, student first/last name, parent first/last name, shipping address, Parent's email address, Parent Approval checkbox. "I understand that I spending X punch cards on this item, and there are no refunds. Are you sure you want this?" Then form emails to Julie and Autumn.
 - Remove all comments and console logs
-- Add in new logos and designs
+- CSS Product Card: adjust so that height of image is the same and the title appears at the same level.
 
 # Improvements and Tasks
 
