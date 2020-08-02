@@ -38,7 +38,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
           <div className='text-center'>View Product</div>
         </a>
       </Popup>
-      <div className='text-gray-600 text-lg'>{productData.title}</div>
+      <div className='text-gray-700 text-lg'>{productData.title}</div>
     </div>
   );
 };

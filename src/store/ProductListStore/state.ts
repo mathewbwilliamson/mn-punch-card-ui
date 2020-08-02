@@ -5,6 +5,7 @@ import { sortProducts, SortType } from './productListStoreUtils';
 interface ProductListStoreState {
   productList: Product[];
   sortedProductList: Product[];
+  asinList: string[];
 }
 
 export const state: ProductListStoreState = {
@@ -14,5 +15,8 @@ export const state: ProductListStoreState = {
     sortProducts(productList as Product[], SortType.DESC);
 
     return productList;
+  }),
+  asinList: derived((state) => {
+    return (state.productList as Product[]).map((product) => product.asin);
   }),
 };

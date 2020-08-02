@@ -1,7 +1,7 @@
 import React from 'react';
 import { FindAmazonProductInput } from './FindAmazonProductInput';
 import { NewProduct } from '../../types/productTypes';
-import { verifyAsin } from '../../utils/verifyAsin';
+import { verifyAsin, verifyAsinIsUnique } from '../../utils/verifyAsin';
 import axios from 'axios';
 import './CreateProductModal.css';
 import { AddNewProductToDB } from './AddNewProductToDB';
@@ -36,16 +36,29 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
   const handleFindProductClick = async (asin: string) => {
     setIsLoading(true);
     const isAsinVerified = verifyAsin(asin);
+    const isAsinUnique = verifyAsinIsUnique(
+      asin,
+      state.ProductListStore.asinList
+    );
 
     if (!isAsinVerified) {
       setError('This ASIN is invalid');
       setIsLoading(false);
 
       return;
+    } else if (!isAsinUnique) {
+      setError('This ASIN is a duplicate');
+      setIsLoading(false);
+
+      return;
     } else {
       setError('');
 
-      await actions.ProductDetailStore.getAmazonProduct(asin);
+      try {
+        await actions.ProductDetailStore.getAmazonProduct(asin);
+      } catch (err) {
+        setError('This product does not exist.');
+      }
       setIsLoading(false);
     }
   };
@@ -67,6 +80,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
     axios
       .post(`${process.env.REACT_APP_API_ENDPOINT}/amazon`, newProduct)
       .then(async (response) => {
+        console.log('\x1b[41m%s \x1b[0m', '[matt] response', response);
         if (response.status !== 200) {
           setError('There was a problem with adding the product!');
           throw new Error('There was a problem!');

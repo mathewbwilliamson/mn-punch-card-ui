@@ -14,7 +14,7 @@ export const FindAmazonProductInput: React.FC<FindAmazonProductInputProps> = ({
   const [asin, setAsin] = React.useState<string>('');
 
   return (
-    <div className='flex justify-between pt-8 pl-4 items-center'>
+    <div className='flex justify-between pt-8 pl-4 items-center text-gray-600'>
       <Input
         name='asin'
         label='ASIN'

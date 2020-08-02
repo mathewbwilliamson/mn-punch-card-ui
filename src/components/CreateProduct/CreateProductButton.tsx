@@ -7,12 +7,16 @@ interface CreateProductButtonProps {}
 
 export const CreateProductButton: React.FC<CreateProductButtonProps> = () => {
   return (
-    <div className='w-1/4 mr-12'>
+    <div className='w-1/4 flex flex-col lg:flex-row mt-4'>
+      <Button
+        text='Refresh All'
+        containerClassNames='w-full flex justify-end mr-4 mb-4'
+      />
       <Popup
         trigger={
           <Button
             text='Add New Product'
-            containerClassNames={'w-full flex justify-end -mr-4'}
+            containerClassNames='w-full flex justify-end -mr-4'
           />
         }
         modal={true}
