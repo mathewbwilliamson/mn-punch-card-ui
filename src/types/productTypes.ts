@@ -12,4 +12,5 @@ export interface NewProduct {
   createdBy: string;
   updateSource: string;
   rewardCardPrice: number;
+  link: string;
 }

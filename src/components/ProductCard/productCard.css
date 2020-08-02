@@ -1,0 +1,15 @@
+.product-card__container .popup-content {
+  width: 200px !important;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__container img {
+  max-height: 250px;
+}
+
+.product-card__image-container {
+  height: 250px;
+}
