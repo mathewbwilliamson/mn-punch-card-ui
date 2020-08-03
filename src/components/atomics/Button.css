@@ -1,16 +1,20 @@
 /* General button style (reset) */
 .btn {
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5715;
+  height: 32px;
   color: inherit;
   background: none;
   cursor: pointer;
   padding: 1rem;
   display: inline-block;
-  text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 700;
   outline: none;
   position: relative;
   -webkit-transition: all 0.3s;
@@ -37,6 +41,15 @@
   line-height: 1;
   position: relative;
   -webkit-font-smoothing: antialiased;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #1890ff;
+  border-color: #1890ff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 }
 
 /* Button 3 */

@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <div className={`${containerClassNames}`}>
       <button
-        className={`btn btn-3 ${buttonClassNames} ${disabledClassName}`}
+        className={`btn btn-primary ${buttonClassNames} ${disabledClassName} flex`}
         onClick={!isDisabled ? onClick : undefined}
         disabled={isDisabled}
       >
