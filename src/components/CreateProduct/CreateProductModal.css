@@ -16,3 +16,8 @@
 .product-card__container {
   min-height: 385px;
 }
+
+.product-card__container:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(34, 25, 36, 0.2);
+}

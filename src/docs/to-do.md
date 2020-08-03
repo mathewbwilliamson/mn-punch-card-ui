@@ -9,6 +9,7 @@ DONE - Add a link to the product! Adjust margin top to image, margin bottom away
 DONE - CSS Product Card: adjust so that height of image is the same and the title appears at the same level.
 DONE - Not able to include duplicates on the New Product list
 DONE - Handle the error of being a "valid" asin but not being a real one: B084T448VC
+DONE - Updated button styles
 
 - Add a button for a Release Notes Popup
 - Make Product Card into: On hover, a card pops up like on All Modern (it becomes a card)
