@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreateProductButton } from './CreateProduct/CreateProductButton';
+import { HeaderActions } from './CreateProduct/HeaderActions';
 import logo from '../assets/images/Mathnasium_logo.png';
 
 interface HeaderProps {
@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ isAdmin = false }) => {
         <h2 className='text-3xl w-full font-serif text-center'>
           New Tampa Reward Cabinet
         </h2>
-        {isAdmin && <CreateProductButton />}
+        {isAdmin && <HeaderActions />}
       </div>
     </div>
   );
