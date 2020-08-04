@@ -17,8 +17,13 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
         containerClassNames='header-actions__refresh-all w-full flex justify-end mr-4 mb-4'
         onClick={async () => {
           setIsRefreshing(true);
-          await actions.ProductListStore.refreshAllProducts();
-          await actions.ProductListStore.getProductListFromApi();
+          try {
+            await actions.ProductListStore.refreshAllProducts();
+            await actions.ProductListStore.getProductListFromApi();
+          } catch (err) {
+            console.log('\x1b[41m%s \x1b[0m', 'err', err);
+            setIsRefreshing(false);
+          }
           setIsRefreshing(false);
         }}
         isLoading={isRefreshing}
