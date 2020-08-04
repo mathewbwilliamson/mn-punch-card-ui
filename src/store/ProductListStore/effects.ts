@@ -7,4 +7,9 @@ export const ProductListEffect = {
       (response) => response.data as Product[]
     );
   },
+  refreshAllProducts: async () => {
+    return await axios
+      .post(`${process.env.REACT_APP_API_ENDPOINT}/amazon/refresh`)
+      .then((response) => response.data as Product[]);
+  },
 };

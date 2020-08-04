@@ -1,5 +1,6 @@
 import React from 'react';
 import './Button.css';
+import { LoadingState, LoaderType } from './LoadingState';
 
 interface ButtonProps {
   text: string;
@@ -7,6 +8,7 @@ interface ButtonProps {
   buttonClassNames?: string;
   containerClassNames?: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,6 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   buttonClassNames,
   containerClassNames,
   isDisabled = false,
+  isLoading = false,
 }) => {
   const disabledClassName = isDisabled ? 'disabled' : null;
 
@@ -25,7 +28,15 @@ export const Button: React.FC<ButtonProps> = ({
         onClick={!isDisabled ? onClick : undefined}
         disabled={isDisabled}
       >
-        {text}
+        {isLoading ? (
+          <LoadingState
+            isLoading={isLoading}
+            size={10}
+            type={LoaderType.BEAT}
+          />
+        ) : (
+          text
+        )}
       </button>
     </div>
   );

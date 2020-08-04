@@ -12,6 +12,10 @@ html {
   background-color: #ee3b34;
 }
 
+.header-actions__refresh-all button {
+  min-width: 100px;
+}
+
 .footer .mn-bg-light-red {
   background-image: url('./assets/images/Patterns-Numbers-Red.jpg');
   background-repeat: no-repeat;
