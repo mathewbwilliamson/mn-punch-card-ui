@@ -11,9 +11,9 @@ DONE - Not able to include duplicates on the New Product list
 DONE - Handle the error of being a "valid" asin but not being a real one: B084T448VC
 DONE - Updated button styles
 DONE - Make Product Card into: On hover, a card pops up like on All Modern (it becomes a card)
+DONE - Add a Refresh All button
 
 - Add a button for a Release Notes Popup
-- Add a Refresh All button
 - BEFORE initial release: Have a button to send Autumn and Julie an email with what the kids want. Popup a little popup that says "Tell Julie and Autumn about this product": what they want, student first/last name, parent first/last name, shipping address, Parent's email address, Parent Approval checkbox. "I understand that I spending X punch cards on this item, and there are no refunds. Are you sure you want this?" Then form emails to Julie and Autumn.
 - Remove all comments and console logs
 

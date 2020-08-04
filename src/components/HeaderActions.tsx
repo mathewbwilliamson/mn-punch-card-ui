@@ -1,8 +1,10 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import { CreateProductModal } from './CreateProductModal';
-import { Button } from '../atomics/Button';
-import { useOvermind } from '../../store';
+import { CreateProductModal } from './CreateProduct/CreateProductModal';
+import { Button } from './atomics/Button';
+import { useOvermind } from '../store';
+import { MdComment } from 'react-icons/md';
+import { ReleaseNotesModal } from './ReleaseNotesModal/ReleaseNotesModal';
 
 interface HeaderActionsProps {}
 
@@ -39,6 +41,19 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
         closeOnDocumentClick={false}
       >
         {(handleClose) => <CreateProductModal handleClose={handleClose} />}
+      </Popup>
+
+      <Popup
+        trigger={
+          <Button
+            text={<MdComment />}
+            containerClassNames='w-full flex justify-end -mr-4'
+          />
+        }
+        modal={true}
+        closeOnDocumentClick={false}
+      >
+        {(handleClose) => <ReleaseNotesModal handleClose={handleClose} />}
       </Popup>
     </div>
   );

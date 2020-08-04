@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderActions } from './CreateProduct/HeaderActions';
+import { HeaderActions } from './HeaderActions';
 import logo from '../assets/images/Mathnasium_logo.png';
 
 interface HeaderProps {

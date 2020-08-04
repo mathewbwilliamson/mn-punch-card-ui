@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import './Button.css';
 import { LoadingState, LoaderType } from './LoadingState';
 
 interface ButtonProps {
-  text: string;
+  text: string | ReactElement;
   onClick?: () => void;
   buttonClassNames?: string;
   containerClassNames?: string;
