@@ -1,9 +1,12 @@
 import React from 'react';
 import './OrderProductModal.css';
 import { Product } from '../../types/productTypes';
-import { Input, Form, Checkbox, Button, Select } from 'antd';
+import { Input, Form, Checkbox, Button, Select, Typography } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { Store } from 'antd/lib/form/interface';
+import { states } from '../../utils/states';
+
+const { Title } = Typography;
 
 interface OrderProductModalProps {
   handleClose: () => void;
@@ -29,11 +32,6 @@ interface OrderProductForm {
 
 const onSubmitOrderProduct = (payload: any) => {};
 
-// Have a button to send Autumn and Julie an email with what the kids want. Popup a little
-// popup that says "Tell Julie and Autumn about this product": what they want,
-// student first/last name, parent first/last name, shipping address, Parent's email address,
-// Parent Approval checkbox. "I understand that I spending X punch cards on this item, and there
-// are no refunds. Are you sure you want this?" Then form emails to Julie and Autumn.
 export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   handleClose,
   currentProduct,
@@ -58,10 +56,12 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
     console.log('\x1b[41m%s \x1b[0m', '[matt] values', values);
     handleClose();
   };
+
   const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 16 },
   };
+
   const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
   };
@@ -103,10 +103,11 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
       <Form
         {...layout}
         form={form}
-        name='basic'
+        name='orderProductModal'
         initialValues={initialValues}
         onFinish={onSubmitComplete}
       >
+        <Title level={4}>Order from Julie and Autumn</Title>
         <Form.Item
           label='First Name of Child'
           name='firstNameOfChild'
@@ -205,23 +206,13 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
             onChange={onStateChange}
             allowClear
           >
-            <Option value='male'>male</Option>
-            <Option value='female'>female</Option>
-            <Option value='other'>other</Option>
-          </Select>{' '}
+            {states.map((state) => (
+              <Option key={state} value={state}>
+                {state}
+              </Option>
+            ))}
+          </Select>
         </Form.Item>
-        {/* <Form.Item
-          label='State'
-          name='state'
-          rules={[
-            {
-              ...baseRules,
-              message: 'Please input the state',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item> */}
         <Form.Item
           label='Zip Code'
           name='zipCode'
@@ -244,24 +235,19 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
 
         <Form.Item shouldUpdate={true} {...tailLayout}>
           {() => {
-            console.log(
-              '\x1b[44m%s \x1b[0m',
-              '[matt] isFormDisabled()',
-              isFormDisabled()
-            );
-            console.log(
-              '\x1b[41m%s \x1b[0m',
-              '[matt] form.',
-              form.getFieldsValue()
-            );
             return (
-              <Button
-                type='primary'
-                htmlType='submit'
-                disabled={isFormDisabled()}
-              >
-                Submit
-              </Button>
+              <div>
+                <Button type='primary' onClick={handleClose} className='mr-4'>
+                  Cancel
+                </Button>
+                <Button
+                  type='primary'
+                  htmlType='submit'
+                  disabled={isFormDisabled()}
+                >
+                  Submit
+                </Button>
+              </div>
             );
           }}
         </Form.Item>

@@ -1,10 +1,19 @@
 .order-product-modal .popup-content {
-  width: 700px !important;
-  height: 630px;
+  width: 602px !important;
+  height: 96%;
   overflow-y: auto;
 }
 
 .order-product-modal__container {
   width: 455px;
   height: 425px;
+}
+
+.order-product-modal__container .ant-form-item-control-input-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-product-modal__container .ant-col-offset-8 {
+  margin-left: 0;
 }
