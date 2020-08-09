@@ -14,6 +14,8 @@
   justify-content: flex-end;
 }
 
-.order-product-modal__container .ant-col-offset-8 {
-  margin-left: 0;
+@media only screen and (max-width: 575px) {
+  .order-product-modal__container .ant-col-offset-8 {
+    margin-left: 0;
+  }
 }
