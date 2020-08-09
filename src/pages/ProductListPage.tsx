@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer';
 
 export const ProductListPage: React.FC = () => {
   return (
-    <div>
+    <div className='bg-gray-300'>
       <Header isAdmin={false} />
       <ProductList />
       <Footer />
