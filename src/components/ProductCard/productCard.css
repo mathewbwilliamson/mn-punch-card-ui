@@ -18,3 +18,7 @@
 .product-card__image-container {
   height: 250px;
 }
+
+.product-card__container .ant-card-body {
+  width: 100%;
+}

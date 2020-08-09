@@ -3,7 +3,7 @@ import { Product } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import Popup from 'reactjs-popup';
 import './productCard.css';
-import { Button } from '../atomics/Button';
+import { Card, Button } from 'antd';
 import { OrderProductModal } from '../OrderProductModal/OrderProductModal';
 
 interface ProductCardProps {
@@ -17,7 +17,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
   }
 
   return (
-    <div className='product-card__container relative text-gray-900 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden bg-white'>
+    <Card
+      hoverable={true}
+      className='product-card__container relative text-gray-900 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden bg-white'
+    >
       <div className='absolute top-0 right-0 bg-blue-400 text-white py-2 px-3 rounded-bl-lg'>
         {productData.rewardCardPrice ||
           calculateRewardCardPrice(productData.price)}{' '}
@@ -25,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
       </div>
       <Popup
         trigger={
-          <div className='product-card__image-container mt-10 mb-6'>
+          <div className='product-card__image-container mt-10 mb-6 flex justify-center'>
             <img src={productData.imageUrl} alt={`${productData.title}`} />
           </div>
         }
@@ -40,15 +43,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
           <div className='text-center'>View Product</div>
         </a>
       </Popup>
-      <div className='text-gray-700 text-lg'>{productData.title}</div>
+      <div className='text-gray-700 text-lg h-16'>{productData.title}</div>
 
       <div className='order-product-modal w-full'>
         <Popup
           trigger={
-            <Button
-              text='Buy with Cards!'
-              containerClassNames='w-full flex justify-end -mr-4'
-            />
+            <div className='w-full flex justify-end mt-4'>
+              <Button type='primary'>Buy with Cards!</Button>
+            </div>
           }
           modal={true}
           closeOnDocumentClick={false}
@@ -61,6 +63,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
           )}
         </Popup>
       </div>
-    </div>
+    </Card>
   );
 };
