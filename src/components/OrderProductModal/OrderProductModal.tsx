@@ -76,6 +76,9 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   const isFormDisabled = () => {
     return Object.keys(form.getFieldsValue() as OrderProductForm)
       .map((field) => {
+        if (field === 'parentApproval') {
+          return !form.isFieldTouched(field) || !form.getFieldValue(field);
+        }
         return (
           form.isFieldValidating(field) ||
           !form.isFieldTouched(field) ||
@@ -84,19 +87,11 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
       })
       .some((item) => !!item);
   };
-  // const onGenderChange = (value: any) => {
-  //   switch (value) {
-  //     case 'male':
-  //       form.setFieldsValue({ state: 'Hi, man!' });
-  //       return;
-  //     case 'female':
-  //       form.setFieldsValue({ state: 'Hi, lady!' });
-  //       return;
-  //     case 'other':
-  //       form.setFieldsValue({ state: 'Hi there!' });
-  //       return;
-  //   }
-  // };
+
+  const onStateChange = (value: any) => {
+    form.setFieldsValue({ state: value });
+  };
+
   return (
     <div className='order-product-modal__container bg-white w-full h-full p-8'>
       <button
@@ -195,7 +190,7 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
         >
           <Input />
         </Form.Item>
-        {/* <Form.Item
+        <Form.Item
           label='State'
           name='state'
           rules={[
@@ -207,15 +202,15 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
         >
           <Select
             placeholder='Select a option and change input text above'
-            onChange={onGenderChange}
+            onChange={onStateChange}
             allowClear
           >
             <Option value='male'>male</Option>
             <Option value='female'>female</Option>
             <Option value='other'>other</Option>
           </Select>{' '}
-        </Form.Item> */}
-        <Form.Item
+        </Form.Item>
+        {/* <Form.Item
           label='State'
           name='state'
           rules={[
@@ -226,7 +221,7 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
           ]}
         >
           <Input />
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item
           label='Zip Code'
           name='zipCode'
@@ -253,6 +248,11 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
               '\x1b[44m%s \x1b[0m',
               '[matt] isFormDisabled()',
               isFormDisabled()
+            );
+            console.log(
+              '\x1b[41m%s \x1b[0m',
+              '[matt] form.',
+              form.getFieldsValue()
             );
             return (
               <Button
