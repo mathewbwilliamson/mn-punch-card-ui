@@ -3,6 +3,8 @@ import { Product } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import Popup from 'reactjs-popup';
 import './productCard.css';
+import { Button } from '../atomics/Button';
+import { OrderProductModal } from '../OrderProductModal/OrderProductModal';
 
 interface ProductCardProps {
   productData?: Product;
@@ -39,6 +41,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
         </a>
       </Popup>
       <div className='text-gray-700 text-lg'>{productData.title}</div>
+
+      <div className='order-product-modal w-full'>
+        <Popup
+          trigger={
+            <Button
+              text='Buy with Cards!'
+              containerClassNames='w-full flex justify-end -mr-4'
+            />
+          }
+          modal={true}
+          closeOnDocumentClick={false}
+        >
+          {(handleClose) => (
+            <OrderProductModal
+              handleClose={handleClose}
+              currentProduct={productData}
+            />
+          )}
+        </Popup>
+      </div>
     </div>
   );
 };
