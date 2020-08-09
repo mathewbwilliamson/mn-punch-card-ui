@@ -1,6 +1,5 @@
 import React from 'react';
 import './OrderProductModal.css';
-import { Product } from '../../types/productTypes';
 import { Input, Form, Checkbox, Button, Select, Typography } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { Store } from 'antd/lib/form/interface';
@@ -10,17 +9,17 @@ const { Title } = Typography;
 
 interface OrderProductModalProps {
   handleClose: () => void;
-  currentProduct: Product;
+  onSubmitOrder: (values: OrderProductForm) => void;
 }
 
-interface Address {
+export interface Address {
   streetAddress: string;
   city: string;
   state: string;
   zipCode: string;
 }
 
-interface OrderProductForm {
+export interface OrderProductForm {
   firstNameOfChild: string;
   lastNameOfChild: string;
   firstNameOfParent: string;
@@ -30,11 +29,9 @@ interface OrderProductForm {
   parentApproval: boolean;
 }
 
-const onSubmitOrderProduct = (payload: any) => {};
-
 export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   handleClose,
-  currentProduct,
+  onSubmitOrder,
 }) => {
   const initialValues: OrderProductForm = {
     firstNameOfChild: '',
@@ -53,7 +50,7 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   const { Option } = Select;
 
   const onSubmitComplete = (values: Store) => {
-    console.log('\x1b[41m%s \x1b[0m', '[matt] values', values);
+    onSubmitOrder(values as OrderProductForm);
     handleClose();
   };
 

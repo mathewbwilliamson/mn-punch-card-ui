@@ -4,7 +4,10 @@ import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import Popup from 'reactjs-popup';
 import './productCard.css';
 import { Card, Button } from 'antd';
-import { OrderProductModal } from '../OrderProductModal/OrderProductModal';
+import {
+  OrderProductModal,
+  OrderProductForm,
+} from '../OrderProductModal/OrderProductModal';
 
 interface ProductCardProps {
   productData?: Product;
@@ -15,6 +18,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
   if (!productData) {
     return null;
   }
+
+  const onSubmitOrder = (values: OrderProductForm) => {
+    console.log('\x1b[41m%s \x1b[0m', '[matt] SUBMIT', values);
+  };
 
   return (
     <Card
@@ -58,7 +65,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
           {(handleClose) => (
             <OrderProductModal
               handleClose={handleClose}
-              currentProduct={productData}
+              onSubmitOrder={onSubmitOrder}
             />
           )}
         </Popup>
