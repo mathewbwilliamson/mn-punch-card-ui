@@ -17,6 +17,18 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 10, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          -Added a button for the kids to order a product. They should be able
+          to click on a thing then fill out the information, then the system
+          emails Julie and Autumn with the order request. Of course, there is no
+          user information so there is no check against them actually having the
+          cards.
+        </li>
+        <li>-Updated some looks.</li>
+        <li>-Bug Fix for adding a product.</li>
+      </ul>
       <h5 className='text-gray-700 font-semibold'>August 4, 2020</h5>
       <ul className='text-gray-700'>
         <li>
