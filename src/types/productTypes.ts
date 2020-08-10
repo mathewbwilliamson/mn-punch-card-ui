@@ -15,13 +15,9 @@ export interface NewProduct {
   link: string;
 }
 
-export interface NewOrder extends OrderProductForm, NewProduct {}
-
-export interface Address {
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipCode: string;
+export interface NewOrder {
+  product: NewProduct;
+  order: OrderProductForm;
 }
 
 export interface OrderProductForm {
@@ -29,7 +25,10 @@ export interface OrderProductForm {
   lastNameOfChild: string;
   firstNameOfParent: string;
   lastNameOfParent: string;
-  address: Address;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
   emailAddressOfParent: string;
   parentApproval: boolean;
 }

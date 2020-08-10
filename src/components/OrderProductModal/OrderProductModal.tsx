@@ -19,7 +19,6 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   handleClose,
   onSubmitOrder,
   cardPrice,
-  isOrderSubmitting,
 }) => {
   const initialValues: OrderProductForm = {
     firstNameOfChild: '',
@@ -27,12 +26,10 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
     firstNameOfParent: '',
     lastNameOfParent: '',
     emailAddressOfParent: '',
-    address: {
-      streetAddress: '',
-      city: 'Tampa',
-      state: 'FL',
-      zipCode: '',
-    },
+    streetAddress: '',
+    city: 'Tampa',
+    state: 'FL',
+    zipCode: '',
     parentApproval: false,
   };
   const { Option } = Select;

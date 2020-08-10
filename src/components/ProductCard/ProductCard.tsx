@@ -25,7 +25,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
   const onSubmitOrder = async (values: OrderProductForm) => {
     setIsOrderSubmitting(true);
     console.log('\x1b[41m%s \x1b[0m', '[matt] SUBMIT', values);
-    const newOrder = { ...values, ...productData };
+    const newOrder = {
+      product: { ...productData },
+      order: {
+        firstNameOfChild: values.firstNameOfChild,
+        lastNameOfChild: values.lastNameOfChild,
+        firstNameOfParent: values.firstNameOfParent,
+        lastNameOfParent: values.lastNameOfParent,
+        streetAddress: values.streetAddress,
+        city: values.city,
+        state: values.state,
+        zipCode: values.zipCode,
+        emailAddressOfParent: values.emailAddressOfParent,
+        parentApproval: values.parentApproval,
+      },
+    };
     await actions.ProductDetailStore.submitOrder(newOrder);
     setIsOrderSubmitting(false);
   };
