@@ -4,34 +4,22 @@ import { Input, Form, Checkbox, Button, Select, Typography } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { Store } from 'antd/lib/form/interface';
 import { states } from '../../utils/states';
+import { OrderProductForm } from '../../types/productTypes';
 
 const { Title } = Typography;
 
 interface OrderProductModalProps {
   handleClose: () => void;
   onSubmitOrder: (values: OrderProductForm) => void;
-}
-
-export interface Address {
-  streetAddress: string;
-  city: string;
-  state: string;
-  zipCode: string;
-}
-
-export interface OrderProductForm {
-  firstNameOfChild: string;
-  lastNameOfChild: string;
-  firstNameOfParent: string;
-  lastNameOfParent: string;
-  address: Address;
-  emailAddressOfParent: string;
-  parentApproval: boolean;
+  cardPrice: number;
+  isOrderSubmitting: boolean;
 }
 
 export const OrderProductModal: React.FC<OrderProductModalProps> = ({
   handleClose,
   onSubmitOrder,
+  cardPrice,
+  isOrderSubmitting,
 }) => {
   const initialValues: OrderProductForm = {
     firstNameOfChild: '',
@@ -76,9 +64,10 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
         if (field === 'parentApproval') {
           return !form.isFieldTouched(field) || !form.getFieldValue(field);
         }
+
         return (
           form.isFieldValidating(field) ||
-          !form.isFieldTouched(field) ||
+          (!form.isFieldTouched(field) && !form.getFieldValue(field)) ||
           form.getFieldError(field).length > 0
         );
       })
@@ -230,21 +219,28 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
           <Checkbox>Parent approves of purchase?</Checkbox>
         </Form.Item>
 
+        <div className='mb-6'>
+          I understand that I am spending <b>{cardPrice} punch cards</b> on this
+          item, and there are no refunds. Are you sure you want this?
+        </div>
+
         <Form.Item shouldUpdate={true} {...tailLayout}>
           {() => {
             return (
-              <div>
-                <Button type='primary' onClick={handleClose} className='mr-4'>
-                  Cancel
-                </Button>
-                <Button
-                  type='primary'
-                  htmlType='submit'
-                  disabled={isFormDisabled()}
-                >
-                  Submit
-                </Button>
-              </div>
+              <>
+                <div>
+                  <Button onClick={handleClose} className='mr-4'>
+                    Cancel
+                  </Button>
+                  <Button
+                    type='primary'
+                    htmlType='submit'
+                    disabled={isFormDisabled()}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </>
             );
           }}
         </Form.Item>

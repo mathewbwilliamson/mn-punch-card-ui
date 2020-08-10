@@ -1,4 +1,5 @@
 import { AsyncAction } from 'overmind';
+import { NewOrder } from '../../types/productTypes';
 
 export const deleteProductFromApi: AsyncAction<number, void> = async (
   { state, effects },
@@ -53,4 +54,15 @@ export const refreshProduct: AsyncAction<
     ),
     { ...savedItem, id: payload.id },
   ];
+};
+
+export const submitOrder: AsyncAction<NewOrder, void> = async (
+  { effects },
+  newOrder
+) => {
+  try {
+    await effects.ProductDetailStore.ProductDetailEffect.submitOrder(newOrder);
+  } catch (err) {
+    console.log('Error for Submitting Order: ', err);
+  }
 };

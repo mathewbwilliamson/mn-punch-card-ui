@@ -1,13 +1,11 @@
 import React from 'react';
-import { Product } from '../../types/productTypes';
+import { Product, OrderProductForm } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import Popup from 'reactjs-popup';
 import './productCard.css';
 import { Card, Button } from 'antd';
-import {
-  OrderProductModal,
-  OrderProductForm,
-} from '../OrderProductModal/OrderProductModal';
+import { OrderProductModal } from '../OrderProductModal/OrderProductModal';
+import { useOvermind } from '../../store';
 
 interface ProductCardProps {
   productData?: Product;
@@ -15,12 +13,21 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
+  const { actions } = useOvermind();
+  const [isOrderSubmitting, setIsOrderSubmitting] = React.useState<boolean>(
+    false
+  );
+
   if (!productData) {
     return null;
   }
 
-  const onSubmitOrder = (values: OrderProductForm) => {
+  const onSubmitOrder = async (values: OrderProductForm) => {
+    setIsOrderSubmitting(true);
     console.log('\x1b[41m%s \x1b[0m', '[matt] SUBMIT', values);
+    const newOrder = { ...values, ...productData };
+    await actions.ProductDetailStore.submitOrder(newOrder);
+    setIsOrderSubmitting(false);
   };
 
   return (
@@ -66,6 +73,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
             <OrderProductModal
               handleClose={handleClose}
               onSubmitOrder={onSubmitOrder}
+              cardPrice={productData.rewardCardPrice}
+              isOrderSubmitting={isOrderSubmitting}
             />
           )}
         </Popup>

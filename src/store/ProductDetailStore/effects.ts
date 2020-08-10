@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Product } from '../../types/productTypes';
+import { Product, NewOrder } from '../../types/productTypes';
 
 export const ProductDetailEffect = {
   deleteProductFromApi: async (id: number) => {
@@ -24,5 +24,11 @@ export const ProductDetailEffect = {
         { asin }
       )
     ).data as Product;
+  },
+  submitOrder: async (newOrder: NewOrder) => {
+    return await axios.post(
+      `${process.env.REACT_APP_API_ENDPOINT}/email/buyproduct`,
+      { newOrder }
+    );
   },
 };
