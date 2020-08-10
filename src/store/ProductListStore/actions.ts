@@ -10,6 +10,5 @@ export const getProductListFromApi: AsyncAction = async ({
 
 export const refreshAllProducts: AsyncAction = async ({ state, effects }) => {
   const productListData = await effects.ProductListStore.ProductListEffect.refreshAllProducts();
-  console.log('\x1b[44m%s \x1b[0m', '[matt] productListData', productListData);
-  // state.ProductListStore.productList = productListData;
+  state.ProductListStore.productList = productListData;
 };

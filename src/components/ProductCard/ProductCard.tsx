@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
 
   const onSubmitOrder = async (values: OrderProductForm) => {
     setIsOrderSubmitting(true);
-    console.log('\x1b[41m%s \x1b[0m', '[matt] SUBMIT', values);
+
     const newOrder = {
       product: { ...productData },
       order: {
