@@ -87,6 +87,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         }
         await actions.ProductListStore.getProductListFromApi();
         handleClose();
+        actions.ProductDetailStore.clearProductFromDetailStore();
       });
   };
 

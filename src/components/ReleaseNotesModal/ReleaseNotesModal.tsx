@@ -28,6 +28,7 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         </li>
         <li>-Updated some looks.</li>
         <li>-Bug Fix for adding a product.</li>
+        <li>-Updated database for backend fixes.</li>
       </ul>
       <h5 className='text-gray-700 font-semibold'>August 4, 2020</h5>
       <ul className='text-gray-700'>

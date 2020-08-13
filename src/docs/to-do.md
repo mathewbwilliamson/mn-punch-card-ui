@@ -19,7 +19,6 @@ DONE - Add a button for a Release Notes Popup
 - Added a button for the kids to order a product. They should be able to click on a thing then fill out the information, then the system emails Julie and Autumn with the order request. Of course, there is no user information so there is no check against them actually having the cards.
 - Bug Fix for adding a product.
 
-* BEFORE initial release: Have a button to send Autumn and Julie an email with what the kids want. Popup a little popup that says "Tell Julie and Autumn about this product": what they want, student first/last name, parent first/last name, shipping address, Parent's email address, Parent Approval checkbox. "I understand that I spending X punch cards on this item, and there are no refunds. Are you sure you want this?" Then form emails to Julie and Autumn.
 * Remove all comments and console logs
 
 # Improvements and Tasks

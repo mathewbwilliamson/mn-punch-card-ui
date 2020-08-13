@@ -1,4 +1,4 @@
-import { AsyncAction } from 'overmind';
+import { AsyncAction, Action } from 'overmind';
 import { NewOrder } from '../../types/productTypes';
 
 export const deleteProductFromApi: AsyncAction<number, void> = async (
@@ -9,6 +9,10 @@ export const deleteProductFromApi: AsyncAction<number, void> = async (
   state.ProductListStore.productList = state.ProductListStore.productList.filter(
     (item) => item.id !== id
   );
+};
+
+export const clearProductFromDetailStore: Action<void, void> = ({ state }) => {
+  state.ProductDetailStore.currentProduct = undefined;
 };
 
 export const updateProduct: AsyncAction<
