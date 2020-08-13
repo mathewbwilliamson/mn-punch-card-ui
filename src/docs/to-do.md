@@ -13,13 +13,20 @@ DONE - Updated button styles
 DONE - Make Product Card into: On hover, a card pops up like on All Modern (it becomes a card)
 DONE - Add a Refresh All button
 DONE - Add a button for a Release Notes Popup
-
 8/9/2020
+DONE - Added a button for the kids to order a product. They should be able to click on a thing then fill out the information, then the system emails Julie and Autumn with the order request. Of course, there is no user information so there is no check against them actually having the cards.
+DONE - Bug Fix for adding a product.
+DONE \* Remove all comments and console logs
 
-- Added a button for the kids to order a product. They should be able to click on a thing then fill out the information, then the system emails Julie and Autumn with the order request. Of course, there is no user information so there is no check against them actually having the cards.
-- Bug Fix for adding a product.
+BUGS
 
-* Remove all comments and console logs
+- Buy With Cards Button:
+  - Look like a button on mobile?
+  - Emails aren't working
+  - Change order of fields to first name, then last name. Duh
+  - Make submit buttons bigger (across the page like we used to do in PWA)
+  - Form looks like crap.
+  - "Order from Mathnasium of New Tampa" not Julie and Autumn.
 
 # Improvements and Tasks
 

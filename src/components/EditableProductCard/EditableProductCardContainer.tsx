@@ -30,7 +30,7 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   };
 
   return (
-    <div className='product-card__container text-gray-900 bg-white m-4 border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
+    <div className='product-card__container text-gray-900 bg-white border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
       <LoadingState isLoading={isRefreshLoading} />
       {!isRefreshLoading && (
         <EditableProductCard
