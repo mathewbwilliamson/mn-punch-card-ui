@@ -90,7 +90,7 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
         initialValues={initialValues}
         onFinish={onSubmitComplete}
       >
-        <Title level={4}>Order from Julie and Autumn</Title>
+        <Title level={4}>Order from Mathnasium of New Tampa</Title>
         <Form.Item
           label='First Name of Child'
           name='firstNameOfChild'

@@ -21,11 +21,8 @@ DONE \* Remove all comments and console logs
 BUGS
 
 - Buy With Cards Button:
-  - Look like a button on mobile?
   - Emails aren't working
-  - Change order of fields to first name, then last name. Duh
   - Make submit buttons bigger (across the page like we used to do in PWA)
-  - Form looks like crap.
   - "Order from Mathnasium of New Tampa" not Julie and Autumn.
 
 # Improvements and Tasks
