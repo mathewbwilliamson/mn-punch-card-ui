@@ -22,7 +22,7 @@ BUGS
 
 - Buy With Cards Button:
   - Emails aren't working
-  - Make submit buttons bigger (across the page like we used to do in PWA)
+    DONE - Make submit buttons bigger (across the page like we used to do in PWA)
     DONE - "Order from Mathnasium of New Tampa" not Julie and Autumn.
     DONE- Fix background gray color
     DONE- Make product picture the link, not the button

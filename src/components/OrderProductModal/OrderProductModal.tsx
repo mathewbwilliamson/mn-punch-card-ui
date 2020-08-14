@@ -89,6 +89,7 @@ export const OrderProductModal: React.FC<OrderProductModalProps> = ({
         name='orderProductModal'
         initialValues={initialValues}
         onFinish={onSubmitComplete}
+        className='pb-12'
       >
         <Title level={4}>Order from Mathnasium of New Tampa</Title>
         <Form.Item
