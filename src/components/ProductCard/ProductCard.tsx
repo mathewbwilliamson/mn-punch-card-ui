@@ -57,19 +57,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
       <Popup
         trigger={
           <div className='product-card__image-container mt-10 mb-6 flex justify-center'>
-            <img src={productData.imageUrl} alt={`${productData.title}`} />
+            <a
+              href={productData.link}
+              target='_blank'
+              className='flex items-center justify-center'
+            >
+              <img src={productData.imageUrl} alt={`${productData.title}`} />
+            </a>
           </div>
         }
         position='center center'
         on='hover'
       >
-        <a
-          href={productData.link}
-          target='_blank'
-          className='flex items-center justify-center'
-        >
-          <div className='text-center'>View Product</div>
-        </a>
+        <div className='text-center'>View Product</div>
       </Popup>
       <div className='text-gray-700 text-lg h-16'>{productData.title}</div>
 
@@ -77,7 +77,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
         <Popup
           trigger={
             <div className='w-full flex justify-end mt-4'>
-              <Button type='primary'>Buy with Cards!</Button>
+              <Button type='primary' className='w-full'>
+                Buy with Cards!
+              </Button>
             </div>
           }
           modal={true}
