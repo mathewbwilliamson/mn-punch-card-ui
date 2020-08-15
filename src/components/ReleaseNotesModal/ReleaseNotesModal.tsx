@@ -17,6 +17,17 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 13, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>BUG FIX: Emails are now working.</li>
+        <li>Updated some looks.</li>
+        <li>Bug Fix for adding a product.</li>
+        <li>Updated database for backend fixes.</li>
+        <li>
+          Fixed bug when adding a new product and it keeps the product's info
+          when you go back into the add product modal.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 10, 2020</h5>
       <ul className='text-gray-700'>
         <li>
