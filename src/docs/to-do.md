@@ -1,37 +1,35 @@
 # BEFORE INITIAL RELEASE
 
-8/1/2020
-DONE - Sort products by price, low to high
-DONE - Add in new logos and designs
+- Make top font look like style guide
+- Make the Card Price more oobvious
 
-8/2/2020
-DONE - Add a link to the product! Adjust margin top to image, margin bottom away from image.
-DONE - CSS Product Card: adjust so that height of image is the same and the title appears at the same level.
-DONE - Not able to include duplicates on the New Product list
-DONE - Handle the error of being a "valid" asin but not being a real one: B084T448VC
-DONE - Updated button styles
-DONE - Make Product Card into: On hover, a card pops up like on All Modern (it becomes a card)
-DONE - Add a Refresh All button
-DONE - Add a button for a Release Notes Popup
-8/9/2020
-DONE - Added a button for the kids to order a product. They should be able to click on a thing then fill out the information, then the system emails Julie and Autumn with the order request. Of course, there is no user information so there is no check against them actually having the cards.
-DONE - Bug Fix for adding a product.
-DONE \* Remove all comments and console logs
+https://www.amazon.com/Sushi-Go-Pick-Pass-Card/dp/B00J57VU44/ref=as_li_tl?ie=UTF8&tag=newtamparewar-20
 
-BUGS
-
-DONE - Buy With Cards Button:
-DONE - Emails aren't working
-DONE - Make submit buttons bigger (across the page like we used to do in PWA)
-DONE - "Order from Mathnasium of New Tampa" not Julie and Autumn.
-DONE- Fix background gray color
-DONE- Make product picture the link, not the button
+- Add ref to Create new product in the API
 
 # Improvements and Tasks
 
 - Create a yml file for API deployment
 - Auth for Admins in UI and in API
-- Button on each product so that a kid can order it. It will open a popup that says contact Julie and Autumn to let the know you want this. Eventually, have logins for students so they can ACTUALLY order it. It will track their punch cards then let them order it.
+- Change buttons to be less aggressive but more design-y. Look into vettery and ant design.
+- Make a dev db in addition to normal DB
 - Auth for kids and instructors
 - Instructor dashboard that lists out all the students and allows them to increase their punch card count or decrease their punch card count. Add a dialog box for are you sure?
-- Change buttons to be less aggressive but more design-y. Look into vettery and ant design.
+- Student area to view current punch card
+- User DB:
+  - username
+  - hashed password
+  - isInstructor
+  - isAdmin
+  - lastLogin
+- Student DB:
+  - firstName
+  - lastName
+  - Address
+  - City
+  - State
+  - ZipCode
+  - currentPunchCardSize
+  - currentPunchCardPunches
+  - currentPunchCardColor (EnumObjects)
+  - totalFullPunchCards

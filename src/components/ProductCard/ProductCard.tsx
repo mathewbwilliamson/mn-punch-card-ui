@@ -69,7 +69,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
         position='center center'
         on='hover'
       >
-        <div className='text-center'>View Product</div>
+        <a
+          href={productData.link}
+          target='_blank'
+          className='flex items-center justify-center'
+        >
+          <div className='text-center'>View Product</div>
+        </a>
       </Popup>
       <div className='text-gray-700 text-lg h-16'>{productData.title}</div>
 
