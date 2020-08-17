@@ -17,6 +17,14 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 17, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Updated mobile buttons on Admin page to be more symetric and better
+          looking.
+        </li>
+        <li>Fixed the Product Card Reward card looks and CSS.</li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 13, 2020</h5>
       <ul className='text-gray-700'>
         <li>BUG FIX: Emails are now working.</li>

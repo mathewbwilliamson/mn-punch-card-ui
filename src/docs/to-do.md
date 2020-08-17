@@ -1,7 +1,7 @@
 # BEFORE INITIAL RELEASE
 
-- Make top font look like style guide
-- Make the Card Price more oobvious
+DONE- Make top font look like style guide
+DONE- Make the Card Price more oobvious
 
 # Improvements and Tasks
 
