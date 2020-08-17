@@ -1,7 +1,27 @@
 @import '~antd/dist/antd.css';
 
+@font-face {
+  font-family: AvenirMedium;
+  src: url('./assets/fonts/AvenirLTPro-Medium.woff') format('woff'),
+    url('./assets/fonts/AvenirLTPro-Medium.woff2') format('woff2'),
+    url('./assets/fonts/AvenirLTPro-Medium.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: SonoraMedium;
+  src: url('./assets/fonts/SonoraProOT-Medium.woff') format('woff'),
+    url('./assets/fonts/SonoraProOT-Medium.woff2') format('woff2'),
+    url('./assets/fonts/SonoraProOT-Medium.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
 html {
   background-color: #edf2f7;
+}
+
+body {
+  font-family: AvenirMedium system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
 }
 
 .mn-bg-black {

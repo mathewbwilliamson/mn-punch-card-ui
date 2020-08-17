@@ -3,10 +3,6 @@
 - Make top font look like style guide
 - Make the Card Price more oobvious
 
-https://www.amazon.com/Sushi-Go-Pick-Pass-Card/dp/B00J57VU44/ref=as_li_tl?ie=UTF8&tag=newtamparewar-20
-
-- Add ref to Create new product in the API
-
 # Improvements and Tasks
 
 - Create a yml file for API deployment

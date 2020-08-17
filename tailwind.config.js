@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
-        serif: ['Merriweather', ...defaultTheme.fontFamily.serif],
+        serif: ['SonoraMedium', ...defaultTheme.fontFamily.serif],
       },
       margin: {
         '96': '24rem',

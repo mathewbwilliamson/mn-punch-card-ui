@@ -6040,7 +6040,7 @@ video {
 }
 
 .font-serif {
-  font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif !important;
+  font-family: SonoraMedium, Georgia, Cambria, "Times New Roman", Times, serif !important;
 }
 
 .font-mono {
@@ -19850,7 +19850,7 @@ video {
   }
 
   .sm\:font-serif {
-    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif !important;
+    font-family: SonoraMedium, Georgia, Cambria, "Times New Roman", Times, serif !important;
   }
 
   .sm\:font-mono {
@@ -33657,7 +33657,7 @@ video {
   }
 
   .md\:font-serif {
-    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif !important;
+    font-family: SonoraMedium, Georgia, Cambria, "Times New Roman", Times, serif !important;
   }
 
   .md\:font-mono {
@@ -47464,7 +47464,7 @@ video {
   }
 
   .lg\:font-serif {
-    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif !important;
+    font-family: SonoraMedium, Georgia, Cambria, "Times New Roman", Times, serif !important;
   }
 
   .lg\:font-mono {
@@ -61271,7 +61271,7 @@ video {
   }
 
   .xl\:font-serif {
-    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif !important;
+    font-family: SonoraMedium, Georgia, Cambria, "Times New Roman", Times, serif !important;
   }
 
   .xl\:font-mono {
