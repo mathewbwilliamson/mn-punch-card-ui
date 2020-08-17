@@ -1,10 +1,10 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 import { CreateProductModal } from './CreateProduct/CreateProductModal';
-import { Button } from './atomics/Button';
 import { useOvermind } from '../store';
 import { MdComment } from 'react-icons/md';
 import { ReleaseNotesModal } from './ReleaseNotesModal/ReleaseNotesModal';
+import { Button } from 'antd';
 
 interface HeaderActionsProps {}
 
@@ -13,10 +13,11 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
   const [isRefreshing, setIsRefreshing] = React.useState<boolean>(false);
 
   return (
-    <div className='w-1/4 flex flex-col lg:flex-row mt-4'>
+    <div className='flex items-center justify-evenly w-full flex-row'>
       <Button
-        text='Refresh'
-        containerClassNames='header-actions__refresh-all w-full flex justify-end mr-4 mb-4'
+        className='header-actions__refresh-all'
+        type='primary'
+        loading={isRefreshing}
         onClick={async () => {
           setIsRefreshing(true);
           try {
@@ -28,15 +29,11 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
           }
           setIsRefreshing(false);
         }}
-        isLoading={isRefreshing}
-      />
+      >
+        Refresh
+      </Button>
       <Popup
-        trigger={
-          <Button
-            text='New'
-            containerClassNames='w-full flex justify-end -mr-4'
-          />
-        }
+        trigger={<Button type='primary'>New</Button>}
         modal={true}
         closeOnDocumentClick={false}
       >
@@ -45,10 +42,9 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
 
       <Popup
         trigger={
-          <Button
-            text={<MdComment />}
-            containerClassNames='w-full flex justify-end -mr-4'
-          />
+          <Button type='primary'>
+            <MdComment />
+          </Button>
         }
         modal={true}
         closeOnDocumentClick={false}
