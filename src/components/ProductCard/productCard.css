@@ -12,13 +12,18 @@
 }
 
 .product-card__container img {
-  max-height: 250px;
+  max-height: 170px;
 }
 
 .product-card__image-container {
-  height: 250px;
+  height: 170px;
 }
 
 .product-card__container .ant-card-body {
   width: 100%;
+  min-height: 355px;
+}
+
+.product-card__container .product-card__price {
+  background-color: #1890ff;
 }
