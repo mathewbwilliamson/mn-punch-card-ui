@@ -2,9 +2,8 @@
 
 DONE- Make top font look like style guide
 DONE- Make the Card Price more obvious
-
-- Counter for Refreshes for the month
-  DONE - Toaster for user after they order a product
+DONE - Counter for Refreshes for the month
+DONE - Toaster for user after they order a product
 
 # Improvements and Tasks
 

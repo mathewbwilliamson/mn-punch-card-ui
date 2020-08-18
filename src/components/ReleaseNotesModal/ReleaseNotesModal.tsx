@@ -24,6 +24,10 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
           action was completed: create product, some error messages, and order a
           product.
         </li>
+        <li>
+          Added a refresh counter on the Admin page, and added a counter of how
+          many products there are on the page.
+        </li>
       </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 17, 2020</h5>
       <ul className='text-gray-700'>
