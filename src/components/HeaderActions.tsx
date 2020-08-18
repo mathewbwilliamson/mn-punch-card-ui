@@ -4,7 +4,7 @@ import { CreateProductModal } from './CreateProduct/CreateProductModal';
 import { useOvermind } from '../store';
 import { MdComment } from 'react-icons/md';
 import { ReleaseNotesModal } from './ReleaseNotesModal/ReleaseNotesModal';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 
 interface HeaderActionsProps {}
 
@@ -23,8 +23,10 @@ export const HeaderActions: React.FC<HeaderActionsProps> = () => {
           try {
             await actions.ProductListStore.refreshAllProducts();
             await actions.ProductListStore.getProductListFromApi();
+            message.success('Your products have all been refreshed!');
           } catch (err) {
             console.log('\x1b[41m%s \x1b[0m', 'err', err);
+            message.error('There was an error refreshing products!');
             setIsRefreshing(false);
           }
           setIsRefreshing(false);

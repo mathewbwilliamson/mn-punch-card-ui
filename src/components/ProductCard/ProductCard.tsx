@@ -3,7 +3,7 @@ import { Product, OrderProductForm } from '../../types/productTypes';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import Popup from 'reactjs-popup';
 import './productCard.css';
-import { Card, Button } from 'antd';
+import { Card, Button, message } from 'antd';
 import { OrderProductModal } from '../OrderProductModal/OrderProductModal';
 import { useOvermind } from '../../store';
 
@@ -41,6 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
       },
     };
     await actions.ProductDetailStore.submitOrder(newOrder);
+    message.success('Your order was submitted to Mathnasium of New Tampa!');
     setIsOrderSubmitting(false);
   };
 

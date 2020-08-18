@@ -10,6 +10,7 @@ import { useOvermind } from '../../store';
 import { calculateRewardCardPrice } from '../../utils/calculateRewardCardPrice';
 import { EditableProductCard } from '../EditableProductCard/EditableProductCard';
 import { LoadingState } from '../atomics/LoadingState';
+import { message } from 'antd';
 
 interface CreateProductModalProps {
   handleClose: () => void;
@@ -83,11 +84,13 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
         console.log('\x1b[41m%s \x1b[0m', '[matt] response', response);
         if (response.status !== 200) {
           setError('There was a problem with adding the product!');
+          message.error('There was an error adding the product.');
           throw new Error('There was a problem!');
         }
         await actions.ProductListStore.getProductListFromApi();
         handleClose();
         actions.ProductDetailStore.clearProductFromDetailStore();
+        message.success(`The product, ${newProduct.title}, was created.`);
       });
   };
 

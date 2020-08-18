@@ -17,6 +17,14 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 18, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Updated various places with popup messages to tell the user that an
+          action was completed: create product, some error messages, and order a
+          product.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 17, 2020</h5>
       <ul className='text-gray-700'>
         <li>
