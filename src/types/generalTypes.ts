@@ -5,3 +5,11 @@ export interface BasicResource {
   updatedBy: string;
   updatedAt: string;
 }
+
+export interface AmazonApiAccountData {
+  creditsUsed: number;
+  creditsRemaining: number;
+  creditsLimit: number;
+  overageLimit: number;
+  overageUsed: number;
+}
