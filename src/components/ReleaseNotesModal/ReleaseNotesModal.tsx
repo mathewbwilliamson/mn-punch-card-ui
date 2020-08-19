@@ -17,6 +17,12 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 19, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Updated price calculation on new items to 1.085 instead of 1.08.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 18, 2020</h5>
       <ul className='text-gray-700'>
         <li>
