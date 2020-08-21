@@ -5,8 +5,9 @@ DONE- Make the Card Price more obvious
 DONE - Counter for Refreshes for the month
 DONE - Toaster for user after they order a product
 DONE- Make a dev db in addition to normal DB
+DONE - 1.085 to calculation. Does it update the DB on refresh??
 
-- 1.085 to calculation. Does it update the DB on refresh??
+-Fix bug on title being removed on refresh
 
 # Improvements and Tasks
 

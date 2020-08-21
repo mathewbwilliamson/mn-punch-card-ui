@@ -49,6 +49,7 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
             await actions.ProductDetailStore.refreshProduct({
               id: product.id,
               asin: product.asin,
+              title: product.title,
             });
             setIsRefreshLoading(false);
           }}

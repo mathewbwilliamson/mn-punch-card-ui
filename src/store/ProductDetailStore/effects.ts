@@ -17,11 +17,11 @@ export const ProductDetailEffect = {
     return (await axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon/${asin}`))
       .data as Product;
   },
-  refreshProduct: async (id: number, asin: string) => {
+  refreshProduct: async (id: number, asin: string, title: string) => {
     return (
       await axios.post(
         `${process.env.REACT_APP_API_ENDPOINT}/amazon/refresh/${id}`,
-        { asin }
+        { asin, title }
       )
     ).data as Product;
   },

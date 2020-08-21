@@ -17,6 +17,13 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>August 20, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Bug Fix: When refreshing single products, the title doesn't get wiped
+          again.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 19, 2020</h5>
       <ul className='text-gray-700'>
         <li>

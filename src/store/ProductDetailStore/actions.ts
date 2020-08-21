@@ -44,12 +44,16 @@ export const getAmazonProduct: AsyncAction<string, void> = async (
 };
 
 export const refreshProduct: AsyncAction<
-  { id: number; asin: string },
+  { id: number; asin: string; title: string },
   void
-> = async ({ state, effects }, payload: { id: number; asin: string }) => {
+> = async (
+  { state, effects },
+  payload: { id: number; asin: string; title: string }
+) => {
   const savedItem = await effects.ProductDetailStore.ProductDetailEffect.refreshProduct(
     payload.id,
-    payload.asin
+    payload.asin,
+    payload.title
   );
 
   state.ProductListStore.productList = [
