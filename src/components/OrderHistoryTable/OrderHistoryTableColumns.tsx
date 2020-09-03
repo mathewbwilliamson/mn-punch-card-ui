@@ -47,6 +47,12 @@ export const orderHistoryTableColumns: ColumnsType<ProductOrderHistory> = [
   {
     title: 'Created At',
     dataIndex: 'createdAt',
-    key: 'createdAt', // [matt] Format this better
+    key: 'createdAt',
+    render: (createdAt: string) => {
+      const dateObject = new Date(createdAt);
+      const dateStr = dateObject.toLocaleDateString();
+      const timeStr = dateObject.toLocaleTimeString();
+      return `${dateStr} ${timeStr}`;
+    },
   },
 ];
