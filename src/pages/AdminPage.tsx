@@ -9,7 +9,7 @@ export const AdminPage: React.FC = () => {
     <div className='bg-gray-300'>
       <Header isAdmin={true} />
       <ProductList isAdmin={true} />
-      <Footer />
+      <Footer isAdmin={true} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ export const OrderHistoryPage: React.FC = () => {
     <div className='bg-gray-300'>
       <Header isAdmin={true} />
       <OrderHistoryTable />
-      <Footer />
+      <Footer isAdmin={true} />
     </div>
   );
 };
