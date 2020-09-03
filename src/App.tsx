@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ProductListPage } from './pages/ProductListPage';
 import { AdminPage } from './pages/AdminPage';
+import { OrderHistoryPage } from './pages/OrderHistoryPage';
 
 // [matt] TODO need to put the routing in its own component
 // [matt] make sure everything else goes to Product List Page
@@ -14,6 +15,9 @@ const App: React.FC = () => {
           <Switch>
             <Route exact path='/admin-thisisarealpath-so-this-should-work'>
               <AdminPage />
+            </Route>
+            <Route exact path='/admin-order-history'>
+              <OrderHistoryPage />
             </Route>
             <Route path='/'>
               <ProductListPage />

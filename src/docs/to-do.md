@@ -5,9 +5,12 @@ DONE- Make the Card Price more obvious
 DONE - Counter for Refreshes for the month
 DONE - Toaster for user after they order a product
 DONE- Make a dev db in addition to normal DB
-DONE - 1.085 to calculation. Does it update the DB on refresh??
 
--Fix bug on title being removed on refresh
+- 1.085 to calculation. Does it update the DB on refresh??
+
+- Create a button on the bottom of the footer
+- Button will show all the orders in a new table (find a table component? Ant Design?)
+- Add a "Ordered?" button that operates as a checkbox
 
 # Improvements and Tasks
 
