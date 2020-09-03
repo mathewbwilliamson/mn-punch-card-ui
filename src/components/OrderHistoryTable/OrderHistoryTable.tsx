@@ -5,7 +5,7 @@ import { useOvermind } from '../../store';
 
 export const OrderHistoryTable: React.FC = () => {
   const { state, actions } = useOvermind();
-  const [selectedRowKeys, setSelectedRowKeys] = React.useState<string[]>([]);
+  // const [selectedRowKeys, setSelectedRowKeys] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     actions.OrderHistoryStore.getOrderHistoryFromApi();

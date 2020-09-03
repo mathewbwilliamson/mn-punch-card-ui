@@ -18,7 +18,19 @@ export const orderHistoryTableColumns: ColumnsType<ProductOrderHistory> = [
     title: 'Parent Email Address',
     dataIndex: 'emailAddressOfParent',
     key: 'emailAddressOfParent',
-    // render: () => <div></div>
+  },
+  {
+    title: 'Parent Address',
+    dataIndex: 'streetAddress',
+    key: 'streetAddress',
+    render: (streetAddress: string, orderData: ProductOrderHistory) => {
+      return (
+        <span>
+          {streetAddress}, {orderData.city} {orderData.state}{' '}
+          {orderData.zipCode}
+        </span>
+      );
+    },
   },
   {
     title: 'Title',
