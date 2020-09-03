@@ -3,12 +3,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { ProductOrderHistory } from '../../types/productTypes';
 
 export const orderHistoryTableColumns: ColumnsType<ProductOrderHistory> = [
-  // [matt] add the checkbox
-  {
-    title: 'Has Been Ordered?',
-    dataIndex: 'isOrdered',
-    key: 'isOrdered',
-  },
+  { title: 'Order ID', dataIndex: 'id', key: 'id' },
   {
     title: 'Child First Name',
     dataIndex: 'firstNameOfChild',

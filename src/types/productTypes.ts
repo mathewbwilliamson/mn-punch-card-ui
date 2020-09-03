@@ -35,7 +35,7 @@ export interface OrderProductForm {
 
 export interface ProductOrderHistory {
   id: number;
-  isOrdered: boolean;
+  isOrdered: number;
   firstNameOfChild: string;
   lastNameOfChild: string;
   firstNameOfParent: string;

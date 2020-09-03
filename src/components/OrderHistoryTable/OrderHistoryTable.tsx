@@ -5,20 +5,38 @@ import { useOvermind } from '../../store';
 
 export const OrderHistoryTable: React.FC = () => {
   const { state, actions } = useOvermind();
+  const [selectedRowKeys, setSelectedRowKeys] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     actions.OrderHistoryStore.getOrderHistoryFromApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(
-    '\x1b[41m%s \x1b[0m',
-    '[matt] state',
-    state.OrderHistoryStore.orderHistory
-  );
+
+  // const onSelectChange = (selectRowKeys: any, selectedRows: any) => {
+  //   console.log(
+  //     'selectedRowKeys changed: ',
+  //     selectedRowKeys,
+  //     selectRowKeys,
+  //     selectedRows
+  //   );
+  //   if (selectedRowKeys.find(selectedRows.id)) {
+  //     setSelectedRowKeys(
+  //       selectedRowKeys.filter((item) => item === selectedRows.id)
+  //     );
+  //   } else {
+  //     setSelectedRowKeys([...selectedRowKeys, selectedRows.id]);
+  //   }
+  // };
+
+  // const rowSelection: TableRowSelection<ProductOrderHistory> = {
+  //   selectedRowKeys,
+  //   onChange: onSelectChange,
+  // };
 
   return (
     <div className='bg-gray-300'>
       <Table
+        // rowSelection={rowSelection}
         columns={orderHistoryTableColumns}
         dataSource={state.OrderHistoryStore.orderHistory}
       />
