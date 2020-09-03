@@ -32,3 +32,26 @@ export interface OrderProductForm {
   emailAddressOfParent: string;
   parentApproval: boolean;
 }
+
+export interface ProductOrderHistory {
+  id: number;
+  isOrdered: number;
+  firstNameOfChild: string;
+  lastNameOfChild: string;
+  firstNameOfParent: string;
+  lastNameOfParent: string;
+  emailAddressOfParent: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  productTitle: string;
+  amazonTitle: string;
+  asin: string;
+  price: number;
+  rewardCardPrice: number;
+  link: string;
+  createdBy: string;
+  createdAt: string;
+  updatedAt: string;
+}

@@ -17,6 +17,17 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 3, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Bug Fix: When a user orders a product, the emails aren't working. This
+          is under investigation.
+        </li>
+        <li>
+          Built an order history feature so that when in Admin pages, an admin
+          can easily see the order history.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>August 20, 2020</h5>
       <ul className='text-gray-700'>
         <li>
