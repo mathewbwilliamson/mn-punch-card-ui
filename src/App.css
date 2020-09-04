@@ -49,3 +49,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.header-actions__menu {
+  min-width: 615px;
+}
+
+body {
+  overflow: scroll;
+}

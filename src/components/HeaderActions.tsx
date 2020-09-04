@@ -42,8 +42,9 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
   };
 
   return (
-    <div className='h-full'>
+    <div className='h-full header-actions__menu'>
       <Menu mode='horizontal'>
+        <Menu.Item key='orderHistoryToggle'>{OrderHistoryButton()}</Menu.Item>
         <Menu.Item key='newProduct'>
           <Popup
             trigger={<span>New Product</span>}
@@ -53,8 +54,7 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
             {(handleClose) => <CreateProductModal handleClose={handleClose} />}
           </Popup>
         </Menu.Item>
-        <Menu.Item key='setting:2'>{OrderHistoryButton()}</Menu.Item>
-        <Menu.Item key='setting:3'>
+        <Menu.Item key='refreshAll'>
           <Button
             className='header-actions__refresh-all'
             loading={isRefreshing}
