@@ -8,7 +8,7 @@ export const ProductListPage: React.FC = () => {
     <div className='bg-gray-300'>
       <Header isAdmin={false} />
       <ProductList />
-      <Footer isAdmin={false} />
+      <Footer />
     </div>
   );
 };

@@ -34,8 +34,8 @@ body {
   background-color: #ee3b34;
 }
 
-.header-actions__refresh-all button {
-  min-width: 100px;
+.header-actions__refresh-all {
+  border: none;
 }
 
 .footer .mn-bg-light-red {

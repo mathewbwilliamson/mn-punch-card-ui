@@ -1,12 +1,17 @@
 import React from 'react';
 import { HeaderActions } from './HeaderActions';
 import logo from '../assets/images/Mathnasium_logo.png';
+import { CurrentAdminPage } from '../types/generalTypes';
 
 interface HeaderProps {
   isAdmin?: boolean;
+  currentAdminPage?: CurrentAdminPage;
 }
 
-export const Header: React.FC<HeaderProps> = ({ isAdmin = false }) => {
+export const Header: React.FC<HeaderProps> = ({
+  isAdmin = false,
+  currentAdminPage,
+}) => {
   return (
     <div className='header flex w-full flex flex-col items-center mb-8 bg-white'>
       <div className='flex w-full flex flex-col md:flex-row justify-center items-center py-10 pl-12 pr-12 mn-bg-black text-white'>
@@ -14,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ isAdmin = false }) => {
         <h2 className='text-4xl tracking-widest w-full font-serif text-center text-white mb-0'>
           New Tampa Reward Cabinet
         </h2>
-        {isAdmin && <HeaderActions />}
+        {isAdmin && <HeaderActions currentAdminPage={currentAdminPage} />}
       </div>
     </div>
   );

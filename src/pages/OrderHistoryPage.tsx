@@ -8,12 +8,12 @@ import { CurrentAdminPage } from '../types/generalTypes';
 export const OrderHistoryPage: React.FC = () => {
   return (
     <div className='bg-gray-300'>
-      <Header isAdmin={true} />
-      <OrderHistoryTable />
-      <Footer
+      <Header
         isAdmin={true}
         currentAdminPage={CurrentAdminPage.ORDER_HISTORY}
       />
+      <OrderHistoryTable />
+      <Footer />
     </div>
   );
 };

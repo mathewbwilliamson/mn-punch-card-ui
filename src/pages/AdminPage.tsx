@@ -8,12 +8,12 @@ import { CurrentAdminPage } from '../types/generalTypes';
 export const AdminPage: React.FC = () => {
   return (
     <div className='bg-gray-300'>
-      <Header isAdmin={true} />
-      <ProductList isAdmin={true} />
-      <Footer
+      <Header
         isAdmin={true}
         currentAdminPage={CurrentAdminPage.ADMIN_DASHBOARD}
       />
+      <ProductList isAdmin={true} />
+      <Footer />
     </div>
   );
 };
