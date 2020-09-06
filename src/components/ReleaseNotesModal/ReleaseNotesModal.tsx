@@ -1,5 +1,6 @@
 import React from 'react';
 import { MdClose } from 'react-icons/md';
+import './releaseNotesModal.css';
 
 interface ReleaseNotesModalProps {
   handleClose: () => void;

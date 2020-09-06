@@ -12,6 +12,8 @@ DONE- Make a dev db in addition to normal DB
 - DONE Button will show all the orders in a new table (find a table component? Ant Design?)
 - Add a "Ordered?" button that operates as a checkbox
 - Put button in the Header or create a menu finally
+- BUG: Make sure those items wrap
+- BUG: Refresh (# of items left) needs to be updated correctly.
 
 # Improvements and Tasks
 

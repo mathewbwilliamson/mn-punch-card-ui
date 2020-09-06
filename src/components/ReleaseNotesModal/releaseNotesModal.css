@@ -1,0 +1,5 @@
+.release-notes-modal__container li {
+  white-space: pre-line;
+  line-height: 1.4rem;
+  margin-bottom: 1rem;
+}
