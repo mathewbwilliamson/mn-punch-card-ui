@@ -33,12 +33,16 @@ export const OrderHistoryTable: React.FC = () => {
   //   onChange: onSelectChange,
   // };
 
+  const sortedOrderHistory = [
+    ...(state.OrderHistoryStore.orderHistory || []),
+  ]?.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+
   return (
     <div className='bg-gray-300'>
       <Table
         // rowSelection={rowSelection}
         columns={orderHistoryTableColumns}
-        dataSource={state.OrderHistoryStore.orderHistory}
+        dataSource={sortedOrderHistory}
       />
     </div>
   );
