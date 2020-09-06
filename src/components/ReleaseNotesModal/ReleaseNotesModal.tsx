@@ -18,6 +18,15 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 6, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>Bug Fix: Added a default sort to the Order History page.</li>
+        <li>Added sorting capability to the Order History page.</li>
+        <li>
+          Added a menu to the top of the Admin page. That menu has a toggle for
+          Order History page vs Admin page.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 3, 2020</h5>
       <ul className='text-gray-700'>
         <li>
