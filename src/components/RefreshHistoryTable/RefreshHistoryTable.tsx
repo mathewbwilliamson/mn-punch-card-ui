@@ -9,6 +9,7 @@ export const RefreshHistoryTable: React.FC = () => {
 
   React.useEffect(() => {
     actions.RefreshHistoryStore.getRefreshHistoryFromApi();
+    actions.ProductListStore.getProductListFromApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

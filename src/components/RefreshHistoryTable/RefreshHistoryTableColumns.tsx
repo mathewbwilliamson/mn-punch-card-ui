@@ -1,10 +1,9 @@
 import React from 'react';
 import { CheckOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { ColumnsType } from 'antd/lib/table';
-import {
-  ProductOrderHistory,
-  RefreshHistoryItem,
-} from '../../types/productTypes';
+import { RefreshHistoryItem } from '../../types/productTypes';
+import { Button } from 'antd';
+import { TableColumnRefreshButton } from './TableColumnRefreshButton';
 
 export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
   {
@@ -50,5 +49,11 @@ export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
       const timeStr = dateObject.toLocaleTimeString();
       return `${dateStr} ${timeStr}`;
     },
+  },
+  {
+    title: 'Manual Refresh',
+    dataIndex: 'asin',
+    key: 'asin',
+    render: (asin: string) => <TableColumnRefreshButton asin={asin} />,
   },
 ];
