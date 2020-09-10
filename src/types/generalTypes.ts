@@ -13,8 +13,3 @@ export interface AmazonApiAccountData {
   overageLimit: number;
   overageUsed: number;
 }
-
-export enum CurrentAdminPage {
-  ORDER_HISTORY = 'order-history',
-  ADMIN_DASHBOARD = 'admin-dashboard',
-}

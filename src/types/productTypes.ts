@@ -55,3 +55,12 @@ export interface ProductOrderHistory {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface RefreshHistoryItem {
+  id: number;
+  errorMessage: string;
+  success: boolean;
+  asin: string;
+  createdAt: string;
+  updatedAt: string;
+}

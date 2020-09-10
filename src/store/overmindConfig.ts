@@ -4,11 +4,13 @@ import { createHook } from 'overmind-react';
 import * as ProductListStore from './ProductListStore';
 import * as OrderHistoryStore from './OrderHistoryStore';
 import * as ProductDetailStore from './ProductDetailStore';
+import * as RefreshHistoryStore from './RefreshHistoryStore';
 
 export const config = namespaced({
   ProductListStore,
   ProductDetailStore,
   OrderHistoryStore,
+  RefreshHistoryStore,
 });
 
 declare module 'overmind' {

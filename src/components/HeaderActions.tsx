@@ -2,19 +2,14 @@ import React from 'react';
 import Popup from 'reactjs-popup';
 import { CreateProductModal } from './CreateProduct/CreateProductModal';
 import { useOvermind } from '../store';
-import { MdComment } from 'react-icons/md';
 import { ReleaseNotesModal } from './ReleaseNotesModal/ReleaseNotesModal';
-import { Button, message, Menu, Modal } from 'antd';
-import SubMenu from 'antd/lib/menu/SubMenu';
-import { CurrentAdminPage } from '../types/generalTypes';
-import { Link } from 'react-router-dom';
+import { Menu } from 'antd';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 
-interface HeaderActionsProps {
-  currentAdminPage?: CurrentAdminPage;
-}
+interface HeaderActionsProps {}
 
-export const HeaderActions: React.FC<HeaderActionsProps> = ({
-  currentAdminPage,
+const HeaderActions: React.FC<RouteComponentProps<HeaderActionsProps>> = ({
+  location,
 }) => {
   const { state, actions } = useOvermind();
   const [isRefreshing, setIsRefreshing] = React.useState<boolean>(false);
@@ -27,24 +22,19 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
   const refreshData = state.ProductListStore.apiInformation;
   const totalNumberOfProducts = state.ProductListStore.productList.length;
 
-  const isAdminPage = CurrentAdminPage.ADMIN_DASHBOARD === currentAdminPage;
-
-  const OrderHistoryButton = () => {
-    if (CurrentAdminPage.ADMIN_DASHBOARD === currentAdminPage) {
-      return <Link to='/admin-order-history'>Order History</Link>;
-    } else if (CurrentAdminPage.ORDER_HISTORY === currentAdminPage) {
-      return (
-        <Link to='/admin-thisisarealpath-so-this-should-work'>
-          Admin Dashboard
-        </Link>
-      );
-    }
-  };
-
   return (
     <div className='h-full header-actions__menu'>
-      <Menu mode='horizontal'>
-        <Menu.Item key='orderHistoryToggle'>{OrderHistoryButton()}</Menu.Item>
+      <Menu selectedKeys={[location.pathname]} mode='horizontal'>
+        <Menu.Item key='/admin-thisisarealpath-so-this-should-work'>
+          <Link to='/admin-thisisarealpath-so-this-should-work'>Admin</Link>
+        </Menu.Item>
+        <Menu.Item key='/admin-order-history'>
+          <Link to='/admin-order-history'>Order History</Link>
+        </Menu.Item>
+        <Menu.Item key='/admin-refresh-history'>
+          <Link to='/admin-refresh-history'>Refresh History</Link>
+        </Menu.Item>
+
         <Menu.Item key='newProduct'>
           <Popup
             trigger={<span>New Product</span>}
@@ -54,7 +44,8 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
             {(handleClose) => <CreateProductModal handleClose={handleClose} />}
           </Popup>
         </Menu.Item>
-        <Menu.Item key='refreshAll'>
+
+        {/* <Menu.Item key='refreshAll'>
           <Button
             className='header-actions__refresh-all'
             loading={isRefreshing}
@@ -74,7 +65,7 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
           >
             Refresh ({refreshData.creditsRemaining} Items Left)
           </Button>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key='releaseNotes'>
           <Popup
             trigger={<span>Release Notes</span>}
@@ -85,11 +76,13 @@ export const HeaderActions: React.FC<HeaderActionsProps> = ({
           </Popup>
         </Menu.Item>
       </Menu>
-      {isAdminPage && (
+      {/* {isAdminPage && (
         <div className='mt-4 text-right absolute top-0 right-0 mr-12'>
           Total Amount of Products: {totalNumberOfProducts}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
+
+export default withRouter(HeaderActions);

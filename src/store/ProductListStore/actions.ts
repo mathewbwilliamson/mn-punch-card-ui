@@ -5,6 +5,7 @@ export const getProductListFromApi: AsyncAction = async ({
   effects,
 }) => {
   const productListData = await effects.ProductListStore.ProductListEffect.getProductListFromApi();
+  console.log('\x1b[41m%s \x1b[0m', '[matt] productListData', productListData);
   state.ProductListStore.productList = productListData;
 };
 
