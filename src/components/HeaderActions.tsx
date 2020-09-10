@@ -11,9 +11,11 @@ interface HeaderActionsProps {}
 const HeaderActions: React.FC<RouteComponentProps<HeaderActionsProps>> = ({
   location,
 }) => {
-  const { state, actions } = useOvermind();
+  const { state } = useOvermind();
 
   const totalNumberOfProducts = state.ProductListStore.productList.length;
+  const isAdminPage =
+    location.pathname === '/admin-thisisarealpath-so-this-should-work';
 
   return (
     <div className='h-full header-actions__menu'>
@@ -48,11 +50,11 @@ const HeaderActions: React.FC<RouteComponentProps<HeaderActionsProps>> = ({
           </Popup>
         </Menu.Item>
       </Menu>
-      {/* {isAdminPage && (
+      {isAdminPage && (
         <div className='mt-4 text-right absolute top-0 right-0 mr-12'>
           Total Amount of Products: {totalNumberOfProducts}
         </div>
-      )} */}
+      )}
     </div>
   );
 };

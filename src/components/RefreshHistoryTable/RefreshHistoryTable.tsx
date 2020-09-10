@@ -3,7 +3,6 @@ import { Table, Button, message } from 'antd';
 import { RefreshHistoryTableColumns } from './RefreshHistoryTableColumns';
 import { useOvermind } from '../../store';
 import './RefreshHistoryTable.css';
-import { action } from 'overmind';
 
 export const RefreshHistoryTable: React.FC = () => {
   const { state, actions } = useOvermind();
