@@ -50,8 +50,7 @@ export const RefreshHistoryTable: React.FC = () => {
           setIsRefreshing(false);
         }}
       >
-        Refresh ({state.ProductListStore.apiInformation.creditsRemaining} Items
-        Left)
+        Refresh ({refreshData.creditsRemaining} Items Left)
       </Button>
       <Table
         columns={RefreshHistoryTableColumns}

@@ -2,7 +2,6 @@ import React from 'react';
 import { CheckOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { ColumnsType } from 'antd/lib/table';
 import { RefreshHistoryItem } from '../../types/productTypes';
-import { Button } from 'antd';
 import { TableColumnRefreshButton } from './TableColumnRefreshButton';
 import { TableColumnTitleRender } from './TableColumnTitleRender';
 
