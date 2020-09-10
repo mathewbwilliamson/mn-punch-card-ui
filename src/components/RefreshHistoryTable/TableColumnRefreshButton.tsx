@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { useOvermind } from '../../store';
+import { ReloadOutlined } from '@ant-design/icons';
 
 interface TableColumnRefreshButtonProps {
   asin: string;
@@ -17,17 +18,17 @@ export const TableColumnRefreshButton: React.FC<TableColumnRefreshButtonProps> =
   const itemRefreshed = state.ProductListStore.productList.find(
     (item) => item.asin === asin
   );
-  console.log(
-    '\x1b[41m%s \x1b[0m',
-    '[matt] state.productListStore',
-    state.ProductListStore.productList
-  );
+
   const refreshHistoryItem = state.RefreshHistoryStore.refreshHistory?.find(
     (item) => item.asin === asin
   );
-  console.log('\x1b[44m%s \x1b[0m', '[matt] itemRefreshed', itemRefreshed);
+
   return (
     <Button
+      type='primary'
+      className='flex items-center'
+      loading={isRefreshLoading}
+      icon={<ReloadOutlined />}
       onClick={async () => {
         if (!itemRefreshed) {
           return;
@@ -38,9 +39,10 @@ export const TableColumnRefreshButton: React.FC<TableColumnRefreshButtonProps> =
           asin: itemRefreshed.asin,
           title: itemRefreshed.title,
         });
+        await actions.RefreshHistoryStore.getRefreshHistoryFromApi();
         setIsRefreshLoading(false);
       }}
-      disabled={!itemRefreshed || !refreshHistoryItem?.success}
+      disabled={!itemRefreshed || refreshHistoryItem?.success}
     >
       Refresh
     </Button>

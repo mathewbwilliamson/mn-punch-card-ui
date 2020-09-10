@@ -26,6 +26,12 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
           Added a menu to the top of the Admin page. That menu has a toggle for
           Order History page vs Admin page.
         </li>
+        <li>
+          Moved Refresh All button to the Refresh History page. Added a Refresh
+          History page. Note that you can't refresh a product on this page whose
+          Refresh was successful. This will make it easier for you to see which
+          products failed and need to be refreshed.
+        </li>
       </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 3, 2020</h5>
       <ul className='text-gray-700'>

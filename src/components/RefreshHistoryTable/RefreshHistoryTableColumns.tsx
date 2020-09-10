@@ -4,6 +4,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { RefreshHistoryItem } from '../../types/productTypes';
 import { Button } from 'antd';
 import { TableColumnRefreshButton } from './TableColumnRefreshButton';
+import { TableColumnTitleRender } from './TableColumnTitleRender';
 
 export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
   {
@@ -17,6 +18,12 @@ export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
     dataIndex: 'asin',
     key: 'asin',
     sorter: (a, b) => b.asin.localeCompare(a.asin),
+  },
+  {
+    title: 'Title',
+    dataIndex: 'asin',
+    key: 'asinTitle',
+    render: (asin: string) => <TableColumnTitleRender asin={asin} />,
   },
   {
     title: 'Successful Refresh?',
