@@ -23,8 +23,8 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <li>Bug Fix: Added a default sort to the Order History page.</li>
         <li>Added sorting capability to the Order History page.</li>
         <li>
-          Added a menu to the top of the Admin page. That menu has a toggle for
-          Order History page vs Admin page.
+          Added a menu to the top of the Admin page. That menu has the Order
+          History, the Admin Page, and Refresh History.
         </li>
         <li>
           Moved Refresh All button to the Refresh History page. Added a Refresh

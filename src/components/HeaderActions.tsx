@@ -12,14 +12,7 @@ const HeaderActions: React.FC<RouteComponentProps<HeaderActionsProps>> = ({
   location,
 }) => {
   const { state, actions } = useOvermind();
-  const [isRefreshing, setIsRefreshing] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    actions.ProductListStore.getAmazonApiUsage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRefreshing]);
-
-  const refreshData = state.ProductListStore.apiInformation;
   const totalNumberOfProducts = state.ProductListStore.productList.length;
 
   return (
@@ -45,27 +38,6 @@ const HeaderActions: React.FC<RouteComponentProps<HeaderActionsProps>> = ({
           </Popup>
         </Menu.Item>
 
-        {/* <Menu.Item key='refreshAll'>
-          <Button
-            className='header-actions__refresh-all'
-            loading={isRefreshing}
-            onClick={async () => {
-              setIsRefreshing(true);
-              try {
-                await actions.ProductListStore.refreshAllProducts();
-                await actions.ProductListStore.getProductListFromApi();
-                message.success('Your products have all been refreshed!');
-              } catch (err) {
-                console.log('\x1b[41m%s \x1b[0m', 'err', err);
-                message.error('There was an error refreshing products!');
-                setIsRefreshing(false);
-              }
-              setIsRefreshing(false);
-            }}
-          >
-            Refresh ({refreshData.creditsRemaining} Items Left)
-          </Button>
-        </Menu.Item> */}
         <Menu.Item key='releaseNotes'>
           <Popup
             trigger={<span>Release Notes</span>}
