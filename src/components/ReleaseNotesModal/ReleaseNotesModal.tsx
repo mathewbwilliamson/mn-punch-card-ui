@@ -21,6 +21,12 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
       <h5 className='text-gray-700 font-semibold mt-6'>September 17, 2020</h5>
       <ul className='text-gray-700'>
         <li>
+          Added ability to have a blank priced product on the Admin page but not
+          appear on the main product page. This product will have an error tag
+          telling the admin that the product is not appearing on the
+          student-facing list.
+        </li>
+        <li>
           Bug Fix: When refreshing a product, it was erroring out when there
           wasn't a price but the rest of the product was fine.
         </li>
