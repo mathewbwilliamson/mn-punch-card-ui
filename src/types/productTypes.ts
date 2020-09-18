@@ -64,3 +64,8 @@ export interface RefreshHistoryItem {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ItemError {
+  errorMessage: string;
+  success: boolean;
+}

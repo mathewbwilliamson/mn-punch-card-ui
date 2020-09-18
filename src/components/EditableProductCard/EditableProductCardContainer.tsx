@@ -4,6 +4,9 @@ import { EditableProductCard } from './EditableProductCard';
 import { Button } from '../atomics/Button';
 import { useOvermind } from '../../store';
 import { LoadingState } from '../atomics/LoadingState';
+import { notification } from 'antd';
+import { toaster, ToasterType } from '../Toaster/Toaster';
+import { state } from '../../store/ProductListStore';
 
 interface EditableProductCardContainerProps {
   product?: Product;
@@ -12,7 +15,7 @@ interface EditableProductCardContainerProps {
 export const EditableProductCardContainer: React.FC<EditableProductCardContainerProps> = ({
   product,
 }) => {
-  const { actions } = useOvermind();
+  const { actions, state } = useOvermind();
 
   const [isRefreshLoading, setIsRefreshLoading] = React.useState<boolean>(
     false
@@ -52,6 +55,21 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
               title: product.title,
             });
             setIsRefreshLoading(false);
+
+            if (!!state.ProductDetailStore.productError?.errorMessage) {
+              toaster(
+                'Refresh Error!',
+                state.ProductDetailStore.productError?.errorMessage,
+                ToasterType.ERROR
+              );
+              actions.ProductDetailStore.clearErrorMessage();
+            } else {
+              toaster(
+                'Success!',
+                'The product has been successfully refreshed!',
+                ToasterType.SUCCESS
+              );
+            }
           }}
         />
         <Button

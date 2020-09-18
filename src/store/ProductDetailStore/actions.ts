@@ -1,5 +1,5 @@
 import { AsyncAction, Action } from 'overmind';
-import { NewOrder } from '../../types/productTypes';
+import { NewOrder, Product, ItemError } from '../../types/productTypes';
 
 export const deleteProductFromApi: AsyncAction<number, void> = async (
   { state, effects },
@@ -43,6 +43,10 @@ export const getAmazonProduct: AsyncAction<string, void> = async (
   );
 };
 
+export const clearErrorMessage: Action<void, void> = ({ state }) => {
+  state.ProductDetailStore.productError = undefined;
+};
+
 export const refreshProduct: AsyncAction<
   { id: number; asin: string; title: string },
   void
@@ -50,18 +54,26 @@ export const refreshProduct: AsyncAction<
   { state, effects },
   payload: { id: number; asin: string; title: string }
 ) => {
+  state.ProductDetailStore.productError = undefined;
+
   const savedItem = await effects.ProductDetailStore.ProductDetailEffect.refreshProduct(
     payload.id,
     payload.asin,
     payload.title
   );
 
-  state.ProductListStore.productList = [
-    ...state.ProductListStore.productList.filter(
-      (product) => product.id !== payload.id
-    ),
-    { ...savedItem, id: payload.id },
-  ];
+  if (!!(savedItem as Product).asin) {
+    state.ProductListStore.productList = [
+      ...state.ProductListStore.productList.filter(
+        (product) => product.id !== payload.id
+      ),
+      { ...(savedItem as Product), id: payload.id },
+    ];
+  }
+
+  if (!!(savedItem as ItemError).errorMessage) {
+    state.ProductDetailStore.productError = savedItem as ItemError;
+  }
 };
 
 export const submitOrder: AsyncAction<NewOrder, void> = async (

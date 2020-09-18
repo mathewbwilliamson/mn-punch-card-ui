@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Product, NewOrder } from '../../types/productTypes';
+import { Product, NewOrder, ItemError } from '../../types/productTypes';
 
 export const ProductDetailEffect = {
   deleteProductFromApi: async (id: number) => {
@@ -23,7 +23,7 @@ export const ProductDetailEffect = {
         `${process.env.REACT_APP_API_ENDPOINT}/amazon/refresh/${id}`,
         { asin, title }
       )
-    ).data as Product;
+    ).data as Product | ItemError;
   },
   submitOrder: async (newOrder: NewOrder) => {
     return await axios.post(
