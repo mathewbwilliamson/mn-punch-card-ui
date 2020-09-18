@@ -4,16 +4,19 @@ import { EditableProductCard } from './EditableProductCard';
 import { Button } from '../atomics/Button';
 import { useOvermind } from '../../store';
 import { LoadingState } from '../atomics/LoadingState';
-import { notification } from 'antd';
+import { notification, Tag } from 'antd';
 import { toaster, ToasterType } from '../Toaster/Toaster';
 import { state } from '../../store/ProductListStore';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 interface EditableProductCardContainerProps {
   product?: Product;
+  isErrorItem?: boolean;
 }
 
 export const EditableProductCardContainer: React.FC<EditableProductCardContainerProps> = ({
   product,
+  isErrorItem,
 }) => {
   const { actions, state } = useOvermind();
 
@@ -35,6 +38,15 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   return (
     <div className='product-card__container text-gray-900 bg-white border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
       <LoadingState isLoading={isRefreshLoading} />
+      {isErrorItem && (
+        <Tag
+          icon={<ExclamationCircleOutlined className='mb-1' />}
+          className='self-end'
+          color='orange'
+        >
+          Product is Not Public
+        </Tag>
+      )}
       {!isRefreshLoading && (
         <EditableProductCard
           productData={product}

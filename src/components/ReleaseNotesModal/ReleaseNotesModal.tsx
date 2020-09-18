@@ -18,6 +18,22 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 17, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Bug Fix: When refreshing a product, it was erroring out when there
+          wasn't a price but the rest of the product was fine.
+        </li>
+        <li>
+          Made sure that Refresh from the editing Admin page works correctly
+          when a product has an error or not. Also added a popup message when
+          the refresh happens.
+        </li>
+        <li>
+          Bug Fix: In the Refresh History, Success icon now works correctly, the
+          error message works correctly, and the Refresh button works correctly.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 9, 2020</h5>
       <ul className='text-gray-700'>
         <li>Bug Fix: Added a default sort to the Order History page.</li>
