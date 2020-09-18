@@ -42,7 +42,9 @@ export const TableColumnRefreshButton: React.FC<TableColumnRefreshButtonProps> =
         await actions.RefreshHistoryStore.getRefreshHistoryFromApi();
         setIsRefreshLoading(false);
       }}
-      disabled={!itemRefreshed || refreshHistoryItem?.success}
+      disabled={
+        !itemRefreshed || refreshHistoryItem?.errorMessage === 'undefined'
+      }
     >
       Refresh
     </Button>

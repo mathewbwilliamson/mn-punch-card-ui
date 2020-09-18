@@ -26,11 +26,15 @@ export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
   },
   {
     title: 'Successful Refresh?',
-    dataIndex: 'success',
-    key: 'success',
-    render: (success: boolean) => (
+    dataIndex: 'errorMessage',
+    key: 'errorMessage',
+    render: (errorMessage: string) => (
       <div className='refresh-history-table__success'>
-        {!success ? <CheckOutlined /> : <ExclamationCircleOutlined />}
+        {errorMessage === 'undefined' ? (
+          <CheckOutlined style={{ color: 'green' }} />
+        ) : (
+          <ExclamationCircleOutlined style={{ color: 'red' }} />
+        )}
       </div>
     ),
   },
