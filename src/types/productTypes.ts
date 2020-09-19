@@ -13,6 +13,7 @@ export interface NewProduct {
   updateSource: string;
   rewardCardPrice: number;
   link: string;
+  productTitle?: string;
 }
 
 export interface NewOrder {

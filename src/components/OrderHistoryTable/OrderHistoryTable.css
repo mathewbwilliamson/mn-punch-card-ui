@@ -1,0 +1,8 @@
+.order-history-table__hide {
+  height: unset;
+  width: unset;
+}
+
+.order-history-table__hide span {
+  padding: 0px 2px 2px 2px;
+}

@@ -1,7 +1,11 @@
 import React from 'react';
 import { Table } from 'antd';
-import { orderHistoryTableColumns } from './OrderHistoryTableColumns';
+import {
+  OrderHistoryTableCreator,
+  orderHistoryTableCreator,
+} from './OrderHistoryTableColumns';
 import { useOvermind } from '../../store';
+import './OrderHistoryTable.css';
 
 export const OrderHistoryTable: React.FC = () => {
   const { state, actions } = useOvermind();
@@ -37,11 +41,36 @@ export const OrderHistoryTable: React.FC = () => {
     ...(state.OrderHistoryStore.orderHistory || []),
   ]?.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
+  const onItemHide = (id: number) => {
+    console.log('\x1b[42m%s \x1b[0m', '[matt] hide', id);
+  };
+
+  const onItemDelete = (id: number) => {
+    console.log('\x1b[42m%s \x1b[0m', '[matt] delete', id);
+  };
+
+  const orderHistoryTableCreatorProps: OrderHistoryTableCreator = {
+    onDelete: onItemDelete,
+    onHide: onItemHide,
+  };
+
+  // [matt] Hiding I think will send a thing to the DB for a new column called isHidden
+  // When that record comes back here, the table sees that and prints nothing
+
+  // [matt] Delete button will say isDeleted = true on DB record. Then the DB will not return
+  // the isDeleted records so front end doesn't have to do anything
+
+  // [matt] Need a patch operation so on click of either of these buttons, it updates the DB
+  // with isHidden or isDeleted
+  const orderHistoryColumns = orderHistoryTableCreator(
+    orderHistoryTableCreatorProps
+  );
+
   return (
     <div className='bg-gray-300'>
       <Table
         // rowSelection={rowSelection}
-        columns={orderHistoryTableColumns}
+        columns={orderHistoryColumns}
         dataSource={sortedOrderHistory}
       />
     </div>
