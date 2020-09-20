@@ -55,6 +55,8 @@ export interface ProductOrderHistory {
   createdBy: string;
   createdAt: string;
   updatedAt: string;
+  isHidden?: boolean;
+  isDeleted?: boolean;
 }
 
 export interface RefreshHistoryItem {

@@ -7,4 +7,10 @@ export const OrderHistoryEffects = {
       `${process.env.REACT_APP_API_ENDPOINT}/orderproduct`
     ).then((response) => response.data as ProductOrderHistory[]);
   },
+  patchOrder: async (id: number, payload: Partial<ProductOrderHistory>) => {
+    return await axios.patch(
+      `${process.env.REACT_APP_API_ENDPOINT}/orderproduct/${id}`,
+      payload
+    );
+  },
 };

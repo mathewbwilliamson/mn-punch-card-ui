@@ -42,11 +42,12 @@ export const OrderHistoryTable: React.FC = () => {
   ]?.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   const onItemHide = (id: number) => {
-    console.log('\x1b[42m%s \x1b[0m', '[matt] hide', id);
+    console.log('\x1b[42m%s \x1b[0m', '[matt] hide id', id);
+    actions.OrderHistoryStore.hideOrder(id);
   };
 
   const onItemDelete = (id: number) => {
-    console.log('\x1b[42m%s \x1b[0m', '[matt] delete', id);
+    console.log('\x1b[42m%s \x1b[0m', '[matt] delete id', id);
   };
 
   const orderHistoryTableCreatorProps: OrderHistoryTableCreator = {

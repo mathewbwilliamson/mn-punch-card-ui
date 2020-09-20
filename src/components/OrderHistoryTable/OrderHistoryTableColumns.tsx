@@ -9,6 +9,10 @@ export interface OrderHistoryTableCreator {
   onHide: (id: number) => void;
 }
 
+// [matt] Create an HOC for the React.Fragment isHidden crap
+// When it's minimized and hidden, there should be no padding on the row top and bottom
+// but when it's not minimized, it should have the padding
+
 export const orderHistoryTableCreator = ({
   onDelete,
   onHide,
@@ -20,35 +24,63 @@ export const orderHistoryTableCreator = ({
       title: 'Hide?',
       dataIndex: 'id',
       key: 'id',
-      render: (id: number, orderProductHistory: ProductOrderHistory) => (
-        <Button
-          className='order-history-table__hide flex items-center justify-center m-0 p-0'
-          icon={<PlusOutlined />}
-          onClick={(e) => onHide(id)}
-        ></Button>
-        // <Button
-        //   className='order-history-table__hide flex items-center justify-center m-0 p-0'
-        //   icon={<MinusOutlined />}
-        // ></Button>
-      ),
+      render: (id: number, orderData: ProductOrderHistory) => {
+        console.log(
+          '\x1b[42m%s \x1b[0m',
+          '[matt] orderData',
+          orderData.isHidden
+        );
+        return (
+          <React.Fragment>
+            {orderData.isHidden ? (
+              <Button
+                className='order-history-table__hide flex items-center justify-center m-0 p-0'
+                icon={<PlusOutlined />}
+                onClick={(e) => onHide(id)}
+              ></Button>
+            ) : (
+              <Button
+                className='order-history-table__hide flex items-center justify-center m-0 p-0'
+                icon={<MinusOutlined />}
+                onClick={(e) => onHide(id)}
+              ></Button>
+            )}
+          </React.Fragment>
+        );
+      },
     },
     {
       title: 'Order ID',
       dataIndex: 'id',
       key: 'id',
       sorter: (a, b) => b.id - a.id,
+      render: (id: number, orderData: ProductOrderHistory) => (
+        <React.Fragment>
+          {!orderData.isHidden ? <span>{id}</span> : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Child First Name',
       dataIndex: 'firstNameOfChild',
       key: 'firstNameOfChild',
       sorter: (a, b) => b.firstNameOfChild.localeCompare(a.firstNameOfChild),
+      render: (firstNameOfChild: string, orderData: ProductOrderHistory) => (
+        <React.Fragment>
+          {!orderData.isHidden ? <span>{firstNameOfChild}</span> : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Child Last Name',
       dataIndex: 'lastNameOfChild',
       key: 'lastNameOfChild',
       sorter: (a, b) => b.lastNameOfChild.localeCompare(a.lastNameOfChild),
+      render: (lastNameOfChild: string, orderData: ProductOrderHistory) => (
+        <React.Fragment>
+          {!orderData.isHidden ? <span>{lastNameOfChild}</span> : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Parent Email Address',
@@ -56,6 +88,14 @@ export const orderHistoryTableCreator = ({
       key: 'emailAddressOfParent',
       sorter: (a, b) =>
         b.emailAddressOfParent.localeCompare(a.emailAddressOfParent),
+      render: (
+        emailAddressOfParent: string,
+        orderData: ProductOrderHistory
+      ) => (
+        <React.Fragment>
+          {!orderData.isHidden ? <span>{emailAddressOfParent}</span> : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Parent Address',
@@ -64,10 +104,14 @@ export const orderHistoryTableCreator = ({
       sorter: (a, b) => b.streetAddress.localeCompare(a.streetAddress),
       render: (streetAddress: string, orderData: ProductOrderHistory) => {
         return (
-          <span>
-            {streetAddress}, {orderData.city} {orderData.state}{' '}
-            {orderData.zipCode}
-          </span>
+          <React.Fragment>
+            {!orderData.isHidden ? (
+              <span>
+                {streetAddress}, {orderData.city} {orderData.state}{' '}
+                {orderData.zipCode}
+              </span>
+            ) : null}
+          </React.Fragment>
         );
       },
     },
@@ -78,7 +122,13 @@ export const orderHistoryTableCreator = ({
       sorter: (a, b) => b.productTitle.localeCompare(a.productTitle),
       sortDirections: ['descend', 'ascend'],
       render: (productTitle: string, orderData: ProductOrderHistory) => {
-        return <a href={orderData.link}>{productTitle}</a>;
+        return (
+          <React.Fragment>
+            {!orderData.isHidden ? (
+              <a href={orderData.link}>{productTitle}</a>
+            ) : null}
+          </React.Fragment>
+        );
       },
     },
     {
@@ -87,7 +137,11 @@ export const orderHistoryTableCreator = ({
       key: 'price',
       sorter: (a, b) => a.price - b.price,
       sortDirections: ['descend', 'ascend'],
-      render: (price: string) => `$${price}`,
+      render: (price: string, orderData: ProductOrderHistory) => (
+        <React.Fragment>
+          {!orderData.isHidden ? `$${price}` : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Reward Card Price',
@@ -95,6 +149,11 @@ export const orderHistoryTableCreator = ({
       key: 'rewardCardPrice',
       sorter: (a, b) => a.rewardCardPrice - b.rewardCardPrice,
       sortDirections: ['descend', 'ascend'],
+      render: (rewardCardPrice: string, orderData: ProductOrderHistory) => (
+        <React.Fragment>
+          {!orderData.isHidden ? `${rewardCardPrice}` : null}
+        </React.Fragment>
+      ),
     },
     {
       title: 'Created At',
@@ -102,7 +161,10 @@ export const orderHistoryTableCreator = ({
       key: 'createdAt',
       sorter: (a, b) => b.createdAt.localeCompare(a.createdAt),
       sortDirections: ['descend', 'ascend'],
-      render: (createdAt: string) => {
+      render: (createdAt: string, orderData: ProductOrderHistory) => {
+        if (orderData.isHidden) {
+          return null;
+        }
         const dateObject = new Date(createdAt);
         const dateStr = dateObject.toLocaleDateString();
         const timeStr = dateObject.toLocaleTimeString();
