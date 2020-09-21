@@ -18,6 +18,19 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 22, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Order History: Added Hide button on the left. This button will hide
+          the order from all admins (it's not a per user setting).
+        </li>
+        <li>
+          Order History: A delete button was added to each order. I am using
+          something called "soft delete" so if something is deleted
+          accidentally, I can recover it. It is not actually deleted and it will
+          still be in the database.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 17, 2020</h5>
       <ul className='text-gray-700'>
         <li>
