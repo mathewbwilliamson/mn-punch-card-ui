@@ -13,4 +13,9 @@ export const OrderHistoryEffects = {
       payload
     );
   },
+  deleteOrder: async (id: number) => {
+    return await axios.delete(
+      `${process.env.REACT_APP_API_ENDPOINT}/orderproduct/${id}`
+    );
+  },
 };

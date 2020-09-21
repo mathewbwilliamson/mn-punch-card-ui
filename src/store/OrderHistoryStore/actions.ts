@@ -34,4 +34,15 @@ export const hideOrder: AsyncAction<number, void> = async (
 export const deleteOrder: AsyncAction<number, void> = async (
   { state, effects },
   id
-) => {};
+) => {
+  effects.OrderHistoryStore.OrderHistoryEffects.deleteOrder(id);
+  const existingOrderHistory = [
+    ...(state.OrderHistoryStore.orderHistory || []),
+  ];
+
+  const newOrderHistory = existingOrderHistory.filter(
+    (order) => order.id !== id
+  );
+
+  state.OrderHistoryStore.orderHistory = newOrderHistory;
+};

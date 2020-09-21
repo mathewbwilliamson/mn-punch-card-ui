@@ -42,12 +42,12 @@ export const OrderHistoryTable: React.FC = () => {
   ]?.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   const onItemHide = (id: number) => {
-    console.log('\x1b[42m%s \x1b[0m', '[matt] hide id', id);
     actions.OrderHistoryStore.hideOrder(id);
   };
 
   const onItemDelete = (id: number) => {
     console.log('\x1b[42m%s \x1b[0m', '[matt] delete id', id);
+    actions.OrderHistoryStore.deleteOrder(id);
   };
 
   const orderHistoryTableCreatorProps: OrderHistoryTableCreator = {
@@ -55,14 +55,6 @@ export const OrderHistoryTable: React.FC = () => {
     onHide: onItemHide,
   };
 
-  // [matt] Hiding I think will send a thing to the DB for a new column called isHidden
-  // When that record comes back here, the table sees that and prints nothing
-
-  // [matt] Delete button will say isDeleted = true on DB record. Then the DB will not return
-  // the isDeleted records so front end doesn't have to do anything
-
-  // [matt] Need a patch operation so on click of either of these buttons, it updates the DB
-  // with isHidden or isDeleted
   const orderHistoryColumns = orderHistoryTableCreator(
     orderHistoryTableCreatorProps
   );
