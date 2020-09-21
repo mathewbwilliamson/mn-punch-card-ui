@@ -6,3 +6,12 @@
 .order-history-table__hide span {
   padding: 0px 2px 2px 2px;
 }
+
+.order-history-table__main-table .ant-table-cell {
+  padding: 0 !important;
+}
+
+.order-history-table__visible-cell {
+  display: block;
+  margin: 16px 16px;
+}

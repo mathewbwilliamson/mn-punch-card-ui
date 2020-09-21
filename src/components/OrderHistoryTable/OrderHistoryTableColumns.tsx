@@ -14,7 +14,13 @@ export interface OrderHistoryTableCreator {
 // but when it's not minimized, it should have the padding
 
 export const withHidden = (fragment: JSX.Element, isHidden?: boolean) => {
-  return <React.Fragment>{!isHidden ? fragment : null}</React.Fragment>;
+  return (
+    <React.Fragment>
+      {!isHidden ? (
+        <span className='order-history-table__visible-cell'>{fragment}</span>
+      ) : null}
+    </React.Fragment>
+  );
 };
 
 export const orderHistoryTableCreator = ({
@@ -142,6 +148,16 @@ export const orderHistoryTableCreator = ({
         const timeStr = dateObject.toLocaleTimeString();
         return `${dateStr} ${timeStr}`;
       },
+    },
+    {
+      title: 'Delete?',
+      dataIndex: 'id',
+      key: 'id',
+      render: (id: number, orderData: ProductOrderHistory) =>
+        withHidden(
+          <Button onClick={() => onDelete(id)}>Delete</Button>,
+          orderData.isHidden
+        ),
     },
   ] as ColumnsType<ProductOrderHistory>;
 };

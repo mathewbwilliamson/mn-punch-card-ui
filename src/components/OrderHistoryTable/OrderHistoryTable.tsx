@@ -70,6 +70,7 @@ export const OrderHistoryTable: React.FC = () => {
   return (
     <div className='bg-gray-300'>
       <Table
+        className='order-history-table__main-table'
         // rowSelection={rowSelection}
         columns={orderHistoryColumns}
         dataSource={sortedOrderHistory}
