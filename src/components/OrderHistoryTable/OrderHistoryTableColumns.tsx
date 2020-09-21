@@ -9,10 +9,6 @@ export interface OrderHistoryTableCreator {
   onHide: (id: number) => void;
 }
 
-// [matt] Create an HOC for the React.Fragment isHidden crap
-// When it's minimized and hidden, there should be no padding on the row top and bottom
-// but when it's not minimized, it should have the padding
-
 export const withHidden = (fragment: JSX.Element, isHidden?: boolean) => {
   return (
     <React.Fragment>
@@ -29,8 +25,6 @@ export const orderHistoryTableCreator = ({
 }: OrderHistoryTableCreator) => {
   return [
     {
-      // [matt] Click little plus/minus button. It triggers onHide. OnHide flips isHidden from T to F or vice versa
-      // It immediately updates the data locally and sends off the patch API call in the background
       title: 'Hide?',
       dataIndex: 'id',
       key: 'id',
