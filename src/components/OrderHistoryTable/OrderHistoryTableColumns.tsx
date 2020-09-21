@@ -13,6 +13,10 @@ export interface OrderHistoryTableCreator {
 // When it's minimized and hidden, there should be no padding on the row top and bottom
 // but when it's not minimized, it should have the padding
 
+export const withHidden = (fragment: JSX.Element, isHidden?: boolean) => {
+  return <React.Fragment>{!isHidden ? fragment : null}</React.Fragment>;
+};
+
 export const orderHistoryTableCreator = ({
   onDelete,
   onHide,
@@ -25,11 +29,6 @@ export const orderHistoryTableCreator = ({
       dataIndex: 'id',
       key: 'id',
       render: (id: number, orderData: ProductOrderHistory) => {
-        console.log(
-          '\x1b[42m%s \x1b[0m',
-          '[matt] orderData',
-          orderData.isHidden
-        );
         return (
           <React.Fragment>
             {orderData.isHidden ? (
@@ -54,33 +53,24 @@ export const orderHistoryTableCreator = ({
       dataIndex: 'id',
       key: 'id',
       sorter: (a, b) => b.id - a.id,
-      render: (id: number, orderData: ProductOrderHistory) => (
-        <React.Fragment>
-          {!orderData.isHidden ? <span>{id}</span> : null}
-        </React.Fragment>
-      ),
+      render: (id: number, orderData: ProductOrderHistory) =>
+        withHidden(<span>{id}</span>, orderData.isHidden),
     },
     {
       title: 'Child First Name',
       dataIndex: 'firstNameOfChild',
       key: 'firstNameOfChild',
       sorter: (a, b) => b.firstNameOfChild.localeCompare(a.firstNameOfChild),
-      render: (firstNameOfChild: string, orderData: ProductOrderHistory) => (
-        <React.Fragment>
-          {!orderData.isHidden ? <span>{firstNameOfChild}</span> : null}
-        </React.Fragment>
-      ),
+      render: (firstNameOfChild: string, orderData: ProductOrderHistory) =>
+        withHidden(<span>{firstNameOfChild}</span>, orderData.isHidden),
     },
     {
       title: 'Child Last Name',
       dataIndex: 'lastNameOfChild',
       key: 'lastNameOfChild',
       sorter: (a, b) => b.lastNameOfChild.localeCompare(a.lastNameOfChild),
-      render: (lastNameOfChild: string, orderData: ProductOrderHistory) => (
-        <React.Fragment>
-          {!orderData.isHidden ? <span>{lastNameOfChild}</span> : null}
-        </React.Fragment>
-      ),
+      render: (lastNameOfChild: string, orderData: ProductOrderHistory) =>
+        withHidden(<span>{lastNameOfChild}</span>, orderData.isHidden),
     },
     {
       title: 'Parent Email Address',
@@ -88,14 +78,8 @@ export const orderHistoryTableCreator = ({
       key: 'emailAddressOfParent',
       sorter: (a, b) =>
         b.emailAddressOfParent.localeCompare(a.emailAddressOfParent),
-      render: (
-        emailAddressOfParent: string,
-        orderData: ProductOrderHistory
-      ) => (
-        <React.Fragment>
-          {!orderData.isHidden ? <span>{emailAddressOfParent}</span> : null}
-        </React.Fragment>
-      ),
+      render: (emailAddressOfParent: string, orderData: ProductOrderHistory) =>
+        withHidden(<span>{emailAddressOfParent}</span>, orderData.isHidden),
     },
     {
       title: 'Parent Address',
@@ -103,15 +87,12 @@ export const orderHistoryTableCreator = ({
       key: 'streetAddress',
       sorter: (a, b) => b.streetAddress.localeCompare(a.streetAddress),
       render: (streetAddress: string, orderData: ProductOrderHistory) => {
-        return (
-          <React.Fragment>
-            {!orderData.isHidden ? (
-              <span>
-                {streetAddress}, {orderData.city} {orderData.state}{' '}
-                {orderData.zipCode}
-              </span>
-            ) : null}
-          </React.Fragment>
+        return withHidden(
+          <span>
+            {streetAddress}, {orderData.city} {orderData.state}{' '}
+            {orderData.zipCode}
+          </span>,
+          orderData.isHidden
         );
       },
     },
@@ -122,12 +103,9 @@ export const orderHistoryTableCreator = ({
       sorter: (a, b) => b.productTitle.localeCompare(a.productTitle),
       sortDirections: ['descend', 'ascend'],
       render: (productTitle: string, orderData: ProductOrderHistory) => {
-        return (
-          <React.Fragment>
-            {!orderData.isHidden ? (
-              <a href={orderData.link}>{productTitle}</a>
-            ) : null}
-          </React.Fragment>
+        return withHidden(
+          <a href={orderData.link}>{productTitle}</a>,
+          orderData.isHidden
         );
       },
     },
@@ -137,11 +115,8 @@ export const orderHistoryTableCreator = ({
       key: 'price',
       sorter: (a, b) => a.price - b.price,
       sortDirections: ['descend', 'ascend'],
-      render: (price: string, orderData: ProductOrderHistory) => (
-        <React.Fragment>
-          {!orderData.isHidden ? `$${price}` : null}
-        </React.Fragment>
-      ),
+      render: (price: string, orderData: ProductOrderHistory) =>
+        withHidden(<span>{`$${price}`}</span>, orderData.isHidden),
     },
     {
       title: 'Reward Card Price',
@@ -149,11 +124,8 @@ export const orderHistoryTableCreator = ({
       key: 'rewardCardPrice',
       sorter: (a, b) => a.rewardCardPrice - b.rewardCardPrice,
       sortDirections: ['descend', 'ascend'],
-      render: (rewardCardPrice: string, orderData: ProductOrderHistory) => (
-        <React.Fragment>
-          {!orderData.isHidden ? `${rewardCardPrice}` : null}
-        </React.Fragment>
-      ),
+      render: (rewardCardPrice: string, orderData: ProductOrderHistory) =>
+        withHidden(<span>{`${rewardCardPrice}`}</span>, orderData.isHidden),
     },
     {
       title: 'Created At',
