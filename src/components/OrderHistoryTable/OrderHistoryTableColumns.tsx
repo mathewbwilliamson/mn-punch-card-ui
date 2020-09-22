@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColumnsType } from 'antd/lib/table';
 import { ProductOrderHistory } from '../../types/productTypes';
-import { Button } from 'antd';
+import { Button, Popconfirm } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 
 export interface OrderHistoryTableCreator {
@@ -33,13 +33,13 @@ export const orderHistoryTableCreator = ({
           <React.Fragment>
             {orderData.isHidden ? (
               <Button
-                className='order-history-table__hide flex items-center justify-center m-0 p-0'
+                className='order-history-table__hide flex items-center justify-center mt-0 mb-0 ml-4 p-0'
                 icon={<PlusOutlined />}
                 onClick={(e) => onHide(id)}
               ></Button>
             ) : (
               <Button
-                className='order-history-table__hide flex items-center justify-center m-0 p-0'
+                className='order-history-table__hide flex items-center justify-center mt-0 mb-0 ml-4 p-0'
                 icon={<MinusOutlined />}
                 onClick={(e) => onHide(id)}
               ></Button>
@@ -149,7 +149,15 @@ export const orderHistoryTableCreator = ({
       key: 'id',
       render: (id: number, orderData: ProductOrderHistory) =>
         withHidden(
-          <Button onClick={() => onDelete(id)}>Delete</Button>,
+          <Popconfirm
+            title='Are you sure delete this Order History Item?'
+            onConfirm={() => onDelete(id)}
+            okText='Yes'
+            cancelText='No'
+            placement='left'
+          >
+            <Button>Delete</Button>
+          </Popconfirm>,
           orderData.isHidden
         ),
     },

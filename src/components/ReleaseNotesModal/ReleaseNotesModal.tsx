@@ -20,6 +20,10 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
       <h5 className='text-gray-700 font-semibold mt-6'>September 22, 2020</h5>
       <ul className='text-gray-700'>
+        <li>Order History: Added a confirmation for Delete button.</li>
+      </ul>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 21, 2020</h5>
+      <ul className='text-gray-700'>
         <li>
           Order History: Added Hide button on the left. This button will hide
           the order from all admins (it's not a per user setting).
