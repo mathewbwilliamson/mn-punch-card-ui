@@ -1,6 +1,9 @@
 import { BasicResource } from './generalTypes';
 
-export interface Product extends BasicResource, NewProduct {}
+export interface Product extends BasicResource, NewProduct {
+  isDeleted?: boolean;
+  isHidden?: boolean;
+}
 
 export interface NewProduct {
   asin: string;

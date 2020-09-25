@@ -55,6 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ productData }) => {
           calculateRewardCardPrice(productData.price)}{' '}
         cards
       </div>
+      {/* // [matt] Remove this and replace with AntDesign hover item */}
       <Popup
         trigger={
           <div className='product-card__image-container mb-3 mt-3 flex justify-center'>

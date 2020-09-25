@@ -16,18 +16,21 @@ export const clearProductFromDetailStore: Action<void, void> = ({ state }) => {
 };
 
 export const updateProduct: AsyncAction<
-  { id: number; title: string },
+  { id: number; productAttributes: Partial<Product> },
   void
-> = async ({ state, effects }, payload: { id: number; title: string }) => {
+> = async (
+  { state, effects },
+  payload: { id: number; productAttributes: Partial<Product> }
+) => {
   await effects.ProductDetailStore.ProductDetailEffect.updateProduct(
     payload.id,
-    payload.title
+    payload.productAttributes
   );
 
   state.ProductListStore.productList = state.ProductListStore.productList.map(
     (product) => {
       if (product.id === payload.id) {
-        return { ...product, title: payload.title };
+        return { ...product, ...payload.productAttributes };
       }
       return product;
     }

@@ -7,10 +7,10 @@ export const ProductDetailEffect = {
       `${process.env.REACT_APP_API_ENDPOINT}/amazon/${id}`
     );
   },
-  updateProduct: async (id: number, title: string) => {
+  updateProduct: async (id: number, productAttributes: Partial<Product>) => {
     return await axios.put(
       `${process.env.REACT_APP_API_ENDPOINT}/amazon/${id}`,
-      { title }
+      { productAttributes }
     );
   },
   findAmazonProduct: async (asin: string) => {

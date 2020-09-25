@@ -32,13 +32,16 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
   }
 
   const handleBlur = () => {
-    actions.ProductDetailStore.updateProduct({ id: product.id, title });
+    actions.ProductDetailStore.updateProduct({
+      id: product.id,
+      productAttributes: { title },
+    });
   };
 
   return (
     <div className='product-card__container text-gray-900 bg-white border p-4 h-full w-full flex flex-col items-center overflow-y-hidden'>
       <LoadingState isLoading={isRefreshLoading} />
-      {isErrorItem && (
+      {(isErrorItem || product.isHidden) && (
         <Tag
           icon={<ExclamationCircleOutlined className='mb-1' />}
           className='self-end'
@@ -83,6 +86,16 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
               );
             }
           }}
+        />
+        <Button
+          buttonClassNames='px-4 py-1 mr-4'
+          text='Hide'
+          onClick={() =>
+            actions.ProductDetailStore.updateProduct({
+              id: product.id,
+              productAttributes: { isHidden: !product.isHidden },
+            })
+          }
         />
         <Button
           buttonClassNames='px-4 py-1'

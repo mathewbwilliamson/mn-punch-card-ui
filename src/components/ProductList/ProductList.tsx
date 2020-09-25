@@ -22,7 +22,8 @@ export const ProductList: React.FC<ProductListProps> = ({
       {state.ProductListStore.sortedProductList.map((product) => {
         const isErrorItem =
           !product.rewardCardPrice || product.rewardCardPrice === 0;
-        if (!isAdmin && isErrorItem) {
+
+        if (!isAdmin && (isErrorItem || product.isHidden)) {
           return null;
         }
 
