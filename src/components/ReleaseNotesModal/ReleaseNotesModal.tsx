@@ -18,6 +18,13 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>September 24, 2020</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Main Admin Page with Editable Products: Added an isHidden button. This
+          button will hide the product on the main student product list page.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 22, 2020</h5>
       <ul className='text-gray-700'>
         <li>Order History: Added a confirmation for Delete button.</li>
