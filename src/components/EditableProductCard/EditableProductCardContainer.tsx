@@ -89,7 +89,7 @@ export const EditableProductCardContainer: React.FC<EditableProductCardContainer
         />
         <Button
           buttonClassNames='px-4 py-1 mr-4'
-          text='Hide'
+          text={!!product.isHidden ? 'Hide' : 'Show'}
           onClick={() =>
             actions.ProductDetailStore.updateProduct({
               id: product.id,
