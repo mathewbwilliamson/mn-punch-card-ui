@@ -1,8 +1,10 @@
 import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useOvermind } from '../../store';
 import { EditableProductCardContainer } from '../EditableProductCard/EditableProductCardContainer';
 import './productList.css';
+import { useProducts } from '../../store/ProductListStore/queries';
+import { sortProducts, SortType } from '../../store/ProductListStore/productListStoreUtils';
+import { Product } from '../../types/productTypes';
 
 interface ProductListProps {
   isAdmin?: boolean;
@@ -10,16 +12,17 @@ interface ProductListProps {
 export const ProductList: React.FC<ProductListProps> = ({
   isAdmin = false,
 }) => {
-  const { state, actions } = useOvermind();
+  const { data, error, isFetching } = useProducts();
 
-  React.useEffect(() => {
-    actions.ProductListStore.getProductListFromApi();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  if (isFetching || !!error) {
+    return <div>Loading...</div>
+  }
 
+  const sortedProducts = sortProducts(data as Product[], SortType.DESC)
+  
   return (
     <div className='product-list__container grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 mx-12 gap-8'>
-      {state.ProductListStore.sortedProductList.map((product) => {
+      {sortedProducts.map((product) => {
         const isErrorItem =
           !product.rewardCardPrice || product.rewardCardPrice === 0;
 

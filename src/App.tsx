@@ -5,12 +5,17 @@ import { ProductListPage } from './pages/ProductListPage';
 import { AdminPage } from './pages/AdminPage';
 import { OrderHistoryPage } from './pages/OrderHistoryPage';
 import { RefreshHistoryPage } from './pages/RefreshHistoryPage';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from "react-query/devtools";
 
 // [matt] TODO need to put the routing in its own component
 // [matt] make sure everything else goes to Product List Page
 const App: React.FC = () => {
+  const queryClient = new QueryClient();
+
   return (
     <>
+    <QueryClientProvider client={queryClient}>
       <div className='main-container'>
         <Router>
           <Switch>
@@ -29,6 +34,8 @@ const App: React.FC = () => {
           </Switch>
         </Router>
       </div>
+      <ReactQueryDevtools />
+      </QueryClientProvider>
     </>
   );
 };
