@@ -87,7 +87,7 @@ export const CreateProductModal: React.FC<CreateProductModalProps> = ({
           message.error('There was an error adding the product.');
           throw new Error('There was a problem!');
         }
-        await actions.ProductListStore.getProductListFromApi();
+
         handleClose();
         actions.ProductDetailStore.clearProductFromDetailStore();
         message.success(`The product, ${newProduct.title}, was created.`);

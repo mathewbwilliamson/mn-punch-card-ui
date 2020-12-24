@@ -3,11 +3,6 @@ import { Product } from '../../types/productTypes';
 import { AmazonApiAccountData } from '../../types/generalTypes';
 
 export const ProductListEffect = {
-  getProductListFromApi: async () => {
-    return await axios(`${process.env.REACT_APP_API_ENDPOINT}/amazon`).then(
-      (response) => response.data as Product[]
-    );
-  },
   refreshAllProducts: async () => {
     return await axios
       .post(`${process.env.REACT_APP_API_ENDPOINT}/amazon/refresh`)

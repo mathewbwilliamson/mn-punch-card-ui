@@ -10,7 +10,6 @@ export const RefreshHistoryTable: React.FC = () => {
 
   React.useEffect(() => {
     actions.RefreshHistoryStore.getRefreshHistoryFromApi();
-    actions.ProductListStore.getProductListFromApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,7 +34,6 @@ export const RefreshHistoryTable: React.FC = () => {
           setIsRefreshing(true);
           try {
             await actions.ProductListStore.refreshAllProducts();
-            await actions.ProductListStore.getProductListFromApi();
             message.success('Your products have all been refreshed!');
 
             await actions.RefreshHistoryStore.getRefreshHistoryFromApi();
