@@ -13,8 +13,8 @@ module.exports = {
         serif: ['SonoraMedium', ...defaultTheme.fontFamily.serif],
       },
       margin: {
-        '96': '24rem',
-        '128': '32rem',
+        96: '24rem',
+        128: '32rem',
       },
     },
   },
