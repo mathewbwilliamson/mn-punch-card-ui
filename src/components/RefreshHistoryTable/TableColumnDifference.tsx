@@ -24,14 +24,6 @@ export const TableColumnDifference: React.FC<TableColumnDifferenceProps> = ({
     (differenceAmount / item.newRewardCardPrice) * 100
   );
 
-  console.log(
-    '\x1b[41m%s \x1b[0m',
-    '[matt] differenceAmount, item.oldRewardCardPrice, item.newRewardCardPrice',
-    differenceAmount,
-    item.oldRewardCardPrice,
-    item.newRewardCardPrice
-  );
-
   const increaseText = `(Increased ${percentageChange}%)`;
   const decreaseText = `(Decreased ${percentageChange}%)`;
 
