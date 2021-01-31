@@ -69,6 +69,8 @@ export interface RefreshHistoryItem {
   asin: string;
   createdAt: string;
   updatedAt: string;
+  oldRewardCardPrice: number;
+  newRewardCardPrice: number;
 }
 
 export interface ItemError {

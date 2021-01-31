@@ -4,6 +4,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { RefreshHistoryItem } from '../../types/productTypes';
 import { TableColumnRefreshButton } from './TableColumnRefreshButton';
 import { TableColumnTitleRender } from './TableColumnTitleRender';
+import { TableColumnDifference } from './TableColumnDifference';
 
 export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
   {
@@ -46,6 +47,32 @@ export const RefreshHistoryTableColumns: ColumnsType<RefreshHistoryItem> = [
     render: (errorMessage: string) => (
       <div>{errorMessage !== 'undefined' ? errorMessage : 'No error'}</div>
     ),
+  },
+  {
+    title: 'Old Price',
+    dataIndex: 'oldRewardCardPrice',
+    key: 'oldRewardCardPrice',
+    sorter: (a, b) => b.oldRewardCardPrice - a.oldRewardCardPrice,
+    render: (oldRewardCardPrice: number) => <div>{oldRewardCardPrice}</div>,
+  },
+  {
+    title: 'New Price',
+    dataIndex: 'newRewardCardPrice',
+    key: 'newRewardCardPrice',
+    sorter: (a, b) => b.newRewardCardPrice - a.newRewardCardPrice,
+    render: (newRewardCardPrice: number) => <div>{newRewardCardPrice}</div>,
+  },
+  {
+    title: 'Difference',
+    dataIndex: 'asin',
+    key: 'asin',
+    align: 'center',
+    sorter: (a, b) => {
+      return b.oldRewardCardPrice - a.oldRewardCardPrice;
+    },
+    render: (_, item) => {
+      return <TableColumnDifference item={item} />;
+    },
   },
   {
     title: 'Created At',

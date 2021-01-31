@@ -18,6 +18,17 @@ export const ReleaseNotesModal: React.FC<ReleaseNotesModalProps> = ({
         <MdClose className='fill-current text-gray-600' />
       </button>
       <h2 className='text-gray-700 font-semibold'>Release Notes</h2>
+      <h5 className='text-gray-700 font-semibold mt-6'>January 31, 2021</h5>
+      <ul className='text-gray-700'>
+        <li>
+          Updated refresh history database to store old card prices and new card
+          prices.
+        </li>
+        <li>
+          Updated the refresh history table to include old price, new price,
+          difference and percentage difference.
+        </li>
+      </ul>
       <h5 className='text-gray-700 font-semibold mt-6'>September 24, 2020</h5>
       <ul className='text-gray-700'>
         <li>
